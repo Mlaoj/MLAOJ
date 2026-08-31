@@ -43,17 +43,17 @@
 
     <canvas id="bgCanvas"></canvas>
 
-    <!-- Header -->
+    <!-- Header (Çalışan Menü Linkleri) -->
     <header class="border-b border-gray-800/80 bg-gray-900/90 backdrop-blur-md sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center gap-3">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
                 <div class="w-9 h-9 rounded-full bg-blue-600/20 border border-blue-500/50 flex items-center justify-center font-bold text-blue-400">M</div>
                 <span class="font-black text-lg tracking-wider text-white">MLAOJ <span class="text-blue-500 text-xs font-mono">v7.0</span></span>
             </div>
             
             <nav class="hidden sm:flex items-center gap-4 text-xs font-medium text-gray-300">
                 <a href="#scripts-section" class="hover:text-blue-400 transition flex items-center gap-1.5"><i class="fa-solid fa-code text-blue-500"></i> Kod Bankası</a>
-                <a href="studio.html" class="hover:text-blue-400 transition flex items-center gap-1.5"><i class="fa-solid fa-terminal text-emerald-500"></i> Kod Stüdyosu</a>
+                <a href="#roadmap-section" class="hover:text-blue-400 transition flex items-center gap-1.5"><i class="fa-solid fa-map-location-dot text-emerald-500"></i> Yol Haritası</a>
                 <a href="#tools-section" class="hover:text-blue-400 transition flex items-center gap-1.5"><i class="fa-solid fa-bolt text-yellow-400"></i> Hızlı Araçlar</a>
                 <a href="#faq-section" class="hover:text-blue-400 transition flex items-center gap-1.5"><i class="fa-solid fa-circle-question text-red-400"></i> S.S.S</a>
             </nav>
@@ -85,8 +85,8 @@
                 </p>
 
                 <div class="flex gap-3 pt-1">
-                    <a href="studio.html" class="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-xl font-bold transition flex items-center gap-2 text-xs">
-                        <i class="fa-solid fa-play"></i> Stüdyoyu Başlat (IDE)
+                    <a href="#tools-section" class="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-xl font-bold transition flex items-center gap-2 text-xs">
+                        <i class="fa-solid fa-play"></i> Araçları Kullan
                     </a>
                     <a href="#scripts-section" class="bg-gray-900 border border-gray-800 hover:border-gray-700 text-gray-200 px-4 py-2 rounded-xl font-bold transition flex items-center gap-2 text-xs">
                         <i class="fa-solid fa-layer-group"></i> Kod Bankası
@@ -115,29 +115,56 @@
             </div>
         </section>
 
-        <!-- Düzeltilmiş Sayaçlar -->
+        <!-- Canlı Animasyonlu Sayaçlar -->
         <section class="grid grid-cols-2 md:grid-cols-4 gap-3 bg-gray-900/70 border border-gray-800 rounded-xl p-4 backdrop-blur-md text-center">
             <div>
                 <div class="text-xl sm:text-2xl font-black text-blue-400 font-mono"><span class="counter" data-target="1500">0</span>+</div>
-                <div class="text-[11px] text-gray-400">Hazır Kod & Betik</div>
+                <div class="text-[11px] text-gray-400 mt-1">Hazır Kod & Betik</div>
             </div>
             <div>
                 <div class="text-xl sm:text-2xl font-black text-emerald-400 font-mono"><span class="counter" data-target="100">0</span>%</div>
-                <div class="text-[11px] text-gray-400">Ücretsiz & Açık Kaynak</div>
+                <div class="text-[11px] text-gray-400 mt-1">Ücretsiz & Açık Kaynak</div>
             </div>
             <div>
                 <div class="text-xl sm:text-2xl font-black text-purple-400 font-mono"><span class="counter" data-target="24">0</span>/7</div>
-                <div class="text-[11px] text-gray-400">IDE & Stüdyo Erişimi</div>
+                <div class="text-[11px] text-gray-400 mt-1">IDE & Stüdyo Erişimi</div>
             </div>
             <div>
                 <div class="text-xl sm:text-2xl font-black text-indigo-400 font-mono"><span class="counter" data-target="500">0</span>+</div>
-                <div class="text-[11px] text-gray-400">Aktif Geliştirici</div>
+                <div class="text-[11px] text-gray-400 mt-1">Aktif Geliştirici</div>
             </div>
         </section>
 
-        <!-- Kütüphane / Kod Bankası (Genişletilmiş 8 Kod) -->
+        <!-- Gelişim Yol Haritası -->
+        <section id="roadmap-section" class="space-y-3">
+            <h2 class="text-lg font-bold text-white border-l-4 border-blue-500 pl-3">Gelişim Yol Haritası</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                <div class="bg-gray-900/80 border border-gray-800 rounded-xl p-3.5">
+                    <div class="text-[10px] font-bold text-blue-400 font-mono mb-1">ADIM 1</div>
+                    <h3 class="font-bold text-xs text-white mb-1">Terminal Kullanımı</h3>
+                    <p class="text-[11px] text-gray-400 leading-tight">Linux ve Termux ortamlarında komut satırı temellerini öğrenin.</p>
+                </div>
+                <div class="bg-gray-900/80 border border-gray-800 rounded-xl p-3.5">
+                    <div class="text-[10px] font-bold text-emerald-400 font-mono mb-1">ADIM 2</div>
+                    <h3 class="font-bold text-xs text-white mb-1">Python & Botlar</h3>
+                    <p class="text-[11px] text-gray-400 leading-tight">Veri madenciliği ve otomatik Discord bot mimarileri yazın.</p>
+                </div>
+                <div class="bg-gray-900/80 border border-gray-800 rounded-xl p-3.5">
+                    <div class="text-[10px] font-bold text-purple-400 font-mono mb-1">ADIM 3</div>
+                    <h3 class="font-bold text-xs text-white mb-1">Web Geliştirme</h3>
+                    <p class="text-[11px] text-gray-400 leading-tight">HTML5 ve Tailwind CSS ile modern duyarlı arayüzler kurun.</p>
+                </div>
+                <div class="bg-gray-900/80 border border-gray-800 rounded-xl p-3.5">
+                    <div class="text-[10px] font-bold text-yellow-400 font-mono mb-1">ADIM 4</div>
+                    <h3 class="font-bold text-xs text-white mb-1">Canlıya Alma</h3>
+                    <p class="text-[11px] text-gray-400 leading-tight">GitHub Pages üzerinden projelerinizi anında yayınlayın.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kod Bankası -->
         <section id="scripts-section" class="space-y-4">
-            <div class="border-l-4 border-blue-500 pl-3">
+            <div class="border-l-4 border-emerald-500 pl-3">
                 <h2 class="text-lg font-bold text-white">Hazır Betik & Kod Bankası</h2>
                 <p class="text-[11px] text-gray-400">Projelerinizde doğrudan kullanabileceğiniz hazır modüller.</p>
             </div>
@@ -217,7 +244,7 @@
             </div>
         </section>
 
-        <!-- Canlı Geliştirici Araçları -->
+        <!-- Canlı Geliştirici Araçları (Çalışan İşlevler) -->
         <section id="tools-section" class="space-y-3">
             <div class="border-l-4 border-purple-500 pl-3">
                 <h2 class="text-lg font-bold text-white">Canlı Geliştirici Araçları</h2>
@@ -255,6 +282,24 @@
             </div>
         </section>
 
+        <!-- SSS (Açılır-Kapanır Mantık Düzeltildi) -->
+        <section id="faq-section" class="space-y-3">
+            <div class="border-l-4 border-red-500 pl-3">
+                <h2 class="text-lg font-bold text-white">Sıkça Sorulan Sorular</h2>
+            </div>
+            <div class="space-y-2">
+                <div class="bg-gray-900 border border-gray-800 rounded-xl overflow-hidden">
+                    <button onclick="toggleFaq('faq1')" class="w-full p-3 text-left font-bold text-xs text-white flex justify-between items-center hover:bg-gray-800/40">
+                        <span>MLAOJ servisleri tamamen ücretsiz mi?</span>
+                        <i class="fa-solid fa-chevron-down text-xs text-gray-400"></i>
+                    </button>
+                    <div id="faq1" class="hidden p-3 pt-0 text-xs text-gray-400 border-t border-gray-800/40">
+                        Evet, sunulan IDE stüdyosu, kod arşivi ve araçların tamamı ücretsizdir.
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <!-- Kayan Şerit Barı -->
@@ -263,93 +308,4 @@
             <span><i class="fa-brands fa-python text-yellow-400"></i> Python: async / await Scraper</span>
             <span><i class="fa-solid fa-terminal text-green-400"></i> Termux: pkg update && pkg upgrade</span>
             <span><i class="fa-brands fa-js text-yellow-300"></i> JS: EventLoop Optimization</span>
-            <span><i class="fa-solid fa-shield-halved text-red-400"></i> SEC: SHA-256 Engine</span>
-        </div>
-    </div>
-
-    <footer class="border-t border-gray-800 py-3 text-center text-xs text-gray-500 relative z-10 bg-gray-950">
-        © 2026 MLAOJ Platform. Tüm Hakları Saklıdır.
-    </footer>
-
-    <!-- JS Mantığı -->
-    <script>
-        // Canvas Animasyonu
-        const canvas = document.getElementById('bgCanvas');
-        const ctx = canvas.getContext('2d');
-        let width = canvas.width = window.innerWidth;
-        let height = canvas.height = window.innerHeight;
-
-        window.addEventListener('resize', () => {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-        });
-
-        const particles = Array.from({ length: 25 }, () => ({
-            x: Math.random() * width,
-            y: Math.random() * height,
-            vx: (Math.random() - 0.5) * 1,
-            vy: (Math.random() - 0.5) * 1,
-            radius: Math.random() * 2 + 1
-        }));
-
-        function drawCanvas() {
-            ctx.clearRect(0, 0, width, height);
-            ctx.fillStyle = 'rgba(59, 130, 246, 0.4)';
-            ctx.strokeStyle = 'rgba(59, 130, 246, 0.08)';
-
-            particles.forEach((p, i) => {
-                p.x += p.vx;
-                p.y += p.vy;
-
-                if (p.x < 0 || p.x > width) p.vx *= -1;
-                if (p.y < 0 || p.y > height) p.vy *= -1;
-
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-                ctx.fill();
-
-                for (let j = i + 1; j < particles.length; j++) {
-                    const p2 = particles[j];
-                    const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
-                    if (dist < 100) {
-                        ctx.beginPath();
-                        ctx.moveTo(p.x, p.y);
-                        ctx.lineTo(p2.x, p2.y);
-                        ctx.stroke();
-                    }
-                }
-            });
-            requestAnimationFrame(drawCanvas);
-        }
-        drawCanvas();
-
-        // Garantili Sayaç Animasyonu
-        function animateCounters() {
-            const counters = document.querySelectorAll('.counter');
-            counters.forEach(counter => {
-                const target = parseInt(counter.getAttribute('data-target'), 10);
-                let current = 0;
-                const increment = Math.max(1, Math.ceil(target / 50));
-                
-                const timer = setInterval(() => {
-                    current += increment;
-                    if (current >= target) {
-                        counter.innerText = target;
-                        clearInterval(timer);
-                    } else {
-                        counter.innerText = current;
-                    }
-                }, 30);
-            });
-        }
-
-        // Doğrudan çalıştırma
-        setTimeout(animateCounters, 200);
-
-        // Araç Metotları
-        function convertBase64() {
-            const input = document.getElementById('b64Input').value;
-            try {
-                document.getElementById('b64Result').innerText = btoa(input);
-            } catch (e) {
-                document.getElementById('b64Result').innerText = "Ha
+            <span><i class="fa-solid fa-shield-halved text-red-400"
