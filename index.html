@@ -7,7 +7,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Kayan Şerit Animasyonu */
         @keyframes marquee {
             0% { transform: translateX(0%); }
             100% { transform: translateX(-50%); }
@@ -19,123 +18,124 @@
         }
         .animate-marquee:hover { animation-play-state: paused; }
 
-        /* Parlayan Yazı Animasyonu */
         @keyframes glowText {
-            0%, 100% { filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.6)); }
-            50% { filter: drop-shadow(0 0 25px rgba(168, 85, 247, 0.9)); }
+            0%, 100% { filter: drop-shadow(0 0 12px rgba(59, 130, 246, 0.5)); }
+            50% { filter: drop-shadow(0 0 20px rgba(168, 85, 247, 0.8)); }
         }
         .glow-effect { animation: glowText 3s infinite ease-in-out; }
 
-        /* Arka Plan Canvas */
         canvas#bgCanvas {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100vw;
-            height: 100vh;
+            width: 100%;
+            height: 100%;
             pointer-events: none;
             z-index: 0;
         }
     </style>
 </head>
-<body class="bg-gray-950 text-gray-100 font-sans flex flex-col min-h-screen relative overflow-x-hidden">
+<body class="bg-gray-950 text-gray-100 font-sans min-h-screen flex flex-col justify-between overflow-x-hidden relative">
 
-    <!-- İnteraktif Canlı Parçacık Arka Planı -->
+    <!-- İnteraktif Parçacık Arka Planı -->
     <canvas id="bgCanvas"></canvas>
 
     <!-- Header -->
-    <header class="border-b border-gray-800/80 bg-gray-900/80 backdrop-blur-md sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 py-3.5 flex justify-between items-center">
+    <header class="border-b border-gray-800/80 bg-gray-900/90 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <img src="file_00000000e57c81f48430089ff2017f8a.png" class="w-10 h-10 object-cover rounded-full border border-blue-500/50 shadow-lg shadow-blue-500/20 transition transform hover:rotate-12">
-                <span class="font-black text-2xl tracking-wider text-white">MLAOJ <span class="text-blue-500 text-xs font-mono">v7.0</span></span>
+                <img src="file_00000000e57c81f48430089ff2017f8a.png" class="w-10 h-10 object-cover rounded-full border border-blue-500/50 shadow-md">
+                <span class="font-black text-xl tracking-wider text-white">MLAOJ <span class="text-blue-500 text-xs font-mono">v7.0</span></span>
             </div>
             
-            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
+            <nav class="flex items-center gap-6 text-xs font-medium text-gray-300">
                 <a href="scripts.html" class="hover:text-blue-400 transition flex items-center gap-1.5"><i class="fa-solid fa-code text-blue-500"></i> Kod Bankası</a>
                 <a href="studio.html" class="hover:text-blue-400 transition flex items-center gap-1.5"><i class="fa-solid fa-terminal text-emerald-500"></i> Kod Stüdyosu</a>
                 <a href="tools.html" class="hover:text-blue-400 transition flex items-center gap-1.5"><i class="fa-solid fa-screwdriver-wrench text-purple-400"></i> Araç Suite</a>
-                <a href="#faq" class="hover:text-blue-400 transition flex items-center gap-1.5"><i class="fa-solid fa-circle-question text-yellow-400"></i> S.S.S</a>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="max-w-7xl mx-auto py-16 px-4 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <div>
-            <!-- Animasyonlu Ping Butonu -->
-            <div class="inline-flex items-center gap-3 bg-gray-900/90 border border-gray-800 text-xs text-gray-300 px-4 py-2 rounded-full mb-6 shadow-inner backdrop-blur-sm">
-                <span class="flex h-3 w-3 relative">
-                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                  <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
-                </span>
-                <span class="font-mono text-emerald-400 font-semibold">Sistem Çevrimiçi</span>
-                <span class="text-gray-700">|</span>
-                <span class="font-mono text-gray-400">Gecikme: <span id="pingCounter" class="text-blue-400">12ms</span></span>
-            </div>
+    <!-- Ana İçerik Kapsayıcısı -->
+    <main class="relative z-10 max-w-7xl mx-auto px-6 py-10 w-full flex-1 space-y-12">
+        
+        <!-- Hero Section (Düzeltildi) -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div class="space-y-6">
+                <div class="inline-flex items-center gap-2 bg-gray-900 border border-gray-800 text-xs text-gray-300 px-3.5 py-1.5 rounded-full shadow-inner">
+                    <span class="flex h-2.5 w-2.5 relative">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                    </span>
+                    <span class="font-mono text-emerald-400 font-semibold">Sistem Çevrimiçi</span>
+                    <span class="text-gray-700">|</span>
+                    <span class="font-mono text-gray-400">Gecikme: <span id="pingCounter" class="text-blue-400">12ms</span></span>
+                </div>
 
-            <h1 class="text-4xl md:text-6xl font-black tracking-tight mb-6 leading-tight">
-                Geliştirici Gücünü <br><span class="bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-500 bg-clip-text text-transparent glow-effect">Canlı Ekosistemde Hisset</span>
-            </h1>
-            <p class="text-gray-400 text-base mb-8 max-w-xl leading-relaxed">
-                Müstakil IDE ortamı, devasa betik kütüphanesi ve entegre canlı geliştirici suite araçları ile projelerinize anında yön verin.
-            </p>
+                <h1 class="text-3xl md:text-5xl font-black leading-tight">
+                    Geliştirici Gücünü <br>
+                    <span class="bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-500 bg-clip-text text-transparent glow-effect">Canlı Ekosistemde Hisset</span>
+                </h1>
 
-            <div class="flex gap-4 flex-wrap">
-                <a href="studio.html" class="bg-emerald-600 hover:bg-emerald-500 text-white px-6 py-3.5 rounded-xl font-bold transition shadow-xl shadow-emerald-600/30 flex items-center gap-2 hover:scale-105 text-xs">
-                    <i class="fa-solid fa-play"></i> Stüdyoyu Başlat (IDE)
-                </a>
-                <a href="scripts.html" class="bg-gray-900 border border-gray-800 hover:border-gray-700 text-gray-200 px-6 py-3.5 rounded-xl font-bold transition flex items-center gap-2 hover:scale-105 text-xs">
-                    <i class="fa-solid fa-layer-group"></i> Devasa Kütüphane
-                </a>
-            </div>
-        </div>
+                <p class="text-gray-400 text-sm max-w-lg leading-relaxed">
+                    Müstakil IDE ortamı, devasa betik kütüphanesi ve entegre canlı geliştirici suite araçları ile projelerinize anında yön verin.
+                </p>
 
-        <!-- Terminal Kutusu -->
-        <div class="bg-gray-900/90 border border-gray-800 rounded-2xl overflow-hidden shadow-2xl backdrop-blur-md">
-            <div class="bg-gray-950 px-4 py-3 border-b border-gray-800 flex items-center justify-between">
-                <div class="flex items-center gap-2">
-                    <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
-                    <span class="w-3 h-3 rounded-full bg-yellow-500/80 inline-block"></span>
-                    <span class="w-3 h-3 rounded-full bg-green-500/80 inline-block"></span>
-                    <span class="text-xs font-mono text-gray-400 ml-2">mlaoj-engine-v7.0</span>
+                <div class="flex gap-4 pt-2">
+                    <a href="studio.html" class="bg-emerald-600 hover:bg-emerald-500 text-white px-5 py-3 rounded-xl font-bold transition shadow-lg shadow-emerald-600/20 flex items-center gap-2 text-xs">
+                        <i class="fa-solid fa-play"></i> Stüdyoyu Başlat (IDE)
+                    </a>
+                    <a href="scripts.html" class="bg-gray-900 border border-gray-800 hover:border-gray-700 text-gray-200 px-5 py-3 rounded-xl font-bold transition flex items-center gap-2 text-xs">
+                        <i class="fa-solid fa-layer-group"></i> Devasa Kütüphane
+                    </a>
                 </div>
             </div>
-            <div class="p-6 font-mono text-xs leading-relaxed overflow-x-auto text-gray-300">
-                <p class="text-gray-500"># MLAOJ Platform Engine v7.0 Initializing...</p>
-                <p class="text-emerald-400 mt-2">$ mlaoj status --check</p>
-                <p class="text-blue-300">[INFO] Live IDE Studio: ACTIVE</p>
-                <p class="text-blue-300">[INFO] Script Bank Database: READY</p>
-                <p class="text-purple-400 font-bold mt-2">$ mlaoj run dev-tools</p>
-                <p class="text-yellow-300">>> Base64, Diff & Regex Services Loaded.</p>
+
+            <!-- Terminal Kutusu -->
+            <div class="bg-gray-900/90 border border-gray-800 rounded-2xl overflow-hidden shadow-2xl backdrop-blur-md">
+                <div class="bg-gray-950 px-4 py-3 border-b border-gray-800 flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
+                        <span class="w-3 h-3 rounded-full bg-yellow-500/80 inline-block"></span>
+                        <span class="w-3 h-3 rounded-full bg-green-500/80 inline-block"></span>
+                        <span class="text-xs font-mono text-gray-400 ml-2">mlaoj-engine-v7.0</span>
+                    </div>
+                </div>
+                <div class="p-5 font-mono text-xs leading-relaxed text-gray-300">
+                    <p class="text-gray-500"># MLAOJ Platform Engine v7.0 Initializing...</p>
+                    <p class="text-emerald-400 mt-2">$ mlaoj status --check</p>
+                    <p class="text-blue-300">[INFO] Live IDE Studio: ACTIVE</p>
+                    <p class="text-blue-300">[INFO] Script Bank Database: READY</p>
+                    <p class="text-purple-400 font-bold mt-2">$ mlaoj run dev-tools</p>
+                    <p class="text-yellow-300">>> Services & System Ready.</p>
+                </div>
             </div>
         </div>
-    </section>
 
-    <!-- Dinamik İstatistik Sayaçları -->
-    <section class="max-w-7xl mx-auto px-4 mb-16 relative z-10">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 bg-gray-900/50 border border-gray-800/80 rounded-2xl p-6 backdrop-blur-md text-center">
+        <!-- İstatistik Kutuları -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 bg-gray-900/70 border border-gray-800 rounded-2xl p-6 backdrop-blur-md text-center">
             <div>
-                <div class="text-3xl font-black text-blue-400 font-mono"><span class="counter" data-target="1500">0</span>+</div>
+                <div class="text-2xl md:text-3xl font-black text-blue-400 font-mono"><span class="counter" data-target="1500">0</span>+</div>
                 <div class="text-xs text-gray-400 mt-1">Hazır Kod & Betik</div>
             </div>
             <div>
-                <div class="text-3xl font-black text-emerald-400 font-mono"><span class="counter" data-target="100">0</span>%</div>
+                <div class="text-2xl md:text-3xl font-black text-emerald-400 font-mono"><span class="counter" data-target="100">0</span>%</div>
                 <div class="text-xs text-gray-400 mt-1">Ücretsiz & Açık Kaynak</div>
             </div>
             <div>
-                <div class="text-3xl font-black text-purple-400 font-mono"><span class="counter" data-target="24">0</span>/7</div>
+                <div class="text-2xl md:text-3xl font-black text-purple-400 font-mono"><span class="counter" data-target="24">0</span>/7</div>
                 <div class="text-xs text-gray-400 mt-1">IDE & Stüdyo Erişimi</div>
             </div>
             <div>
-                <div class="text-3xl font-black text-indigo-400 font-mono"><span class="counter" data-target="500">0</span>+</div>
+                <div class="text-2xl md:text-3xl font-black text-indigo-400 font-mono"><span class="counter" data-target="500">0</span>+</div>
                 <div class="text-xs text-gray-400 mt-1">Aktif Geliştirici</div>
             </div>
         </div>
-    </section>
 
-    <!-- Otomatik Kayan Canlı Şerit (Marquee) -->
-    <div class="w-full bg-gray-900/60 border-y border-gray-800/80 py-3 overflow-hidden relative z-10 backdrop-blur-sm mb-16">
+    </main>
+
+    <!-- Kayan Şerit (Marquee) -->
+    <div class="w-full bg-gray-900/80 border-y border-gray-800 py-3 overflow-hidden relative z-10 backdrop-blur-sm">
         <div class="animate-marquee font-mono text-xs text-gray-400 gap-12">
             <span><i class="fa-brands fa-python text-yellow-400"></i> Python: async / await Scraper</span>
             <span><i class="fa-solid fa-terminal text-green-400"></i> Termux: pkg update && pkg upgrade</span>
@@ -146,13 +146,13 @@
         </div>
     </div>
 
-    <footer class="mt-auto border-t border-gray-800 py-8 text-center text-xs text-gray-500 relative z-10">
+    <!-- Footer -->
+    <footer class="border-t border-gray-800 py-6 text-center text-xs text-gray-500 relative z-10 bg-gray-950">
         © 2026 MLAOJ Platform. Tüm Hakları Saklıdır.
     </footer>
 
-    <!-- Animasyon Motoru (JS Canvas + Counter) -->
+    <!-- JS Mantığı -->
     <script>
-        // Parçacık Animasyonu (Canvas)
         const canvas = document.getElementById('bgCanvas');
         const ctx = canvas.getContext('2d');
         let width = canvas.width = window.innerWidth;
@@ -163,18 +163,18 @@
             height = canvas.height = window.innerHeight;
         });
 
-        const particles = Array.from({ length: 45 }, () => ({
+        const particles = Array.from({ length: 35 }, () => ({
             x: Math.random() * width,
             y: Math.random() * height,
-            vx: (Math.random() - 0.5) * 1.2,
-            vy: (Math.random() - 0.5) * 1.2,
+            vx: (Math.random() - 0.5) * 1,
+            vy: (Math.random() - 0.5) * 1,
             radius: Math.random() * 2 + 1
         }));
 
         function drawCanvas() {
             ctx.clearRect(0, 0, width, height);
-            ctx.fillStyle = 'rgba(59, 130, 246, 0.5)';
-            ctx.strokeStyle = 'rgba(59, 130, 246, 0.08)';
+            ctx.fillStyle = 'rgba(59, 130, 246, 0.4)';
+            ctx.strokeStyle = 'rgba(59, 130, 246, 0.06)';
 
             particles.forEach((p, i) => {
                 p.x += p.vx;
@@ -190,7 +190,7 @@
                 for (let j = i + 1; j < particles.length; j++) {
                     const p2 = particles[j];
                     const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
-                    if (dist < 140) {
+                    if (dist < 120) {
                         ctx.beginPath();
                         ctx.moveTo(p.x, p.y);
                         ctx.lineTo(p2.x, p2.y);
@@ -202,13 +202,12 @@
         }
         drawCanvas();
 
-        // Sayı Sayaç Animasyonu
         const counters = document.querySelectorAll('.counter');
         counters.forEach(counter => {
             const updateCount = () => {
                 const target = +counter.getAttribute('data-target');
                 const count = +counter.innerText;
-                const inc = target / 50;
+                const inc = target / 40;
 
                 if (count < target) {
                     counter.innerText = Math.ceil(count + inc);
@@ -220,12 +219,10 @@
             updateCount();
         });
 
-        // Ping Değişim Animasyonu
         setInterval(() => {
             const ping = Math.floor(Math.random() * 8) + 10;
             document.getElementById('pingCounter').innerText = ping + 'ms';
         }, 3000);
     </script>
 </body>
-    </html>
-    
+</html>
