@@ -41,7 +41,6 @@
 </head>
 <body class="bg-gray-950 text-gray-100 font-sans min-h-screen flex flex-col justify-between overflow-x-hidden relative">
 
-    <!-- Canvas Arka Plan -->
     <canvas id="bgCanvas"></canvas>
 
     <!-- Header -->
@@ -53,17 +52,15 @@
             </div>
             
             <nav class="hidden sm:flex items-center gap-4 text-xs font-medium text-gray-300">
-                <a href="scripts.html" class="hover:text-blue-400 transition flex items-center gap-1.5"><i class="fa-solid fa-code text-blue-500"></i> Kod Bankası</a>
+                <a href="#scripts-section" class="hover:text-blue-400 transition flex items-center gap-1.5"><i class="fa-solid fa-code text-blue-500"></i> Kod Bankası</a>
                 <a href="studio.html" class="hover:text-blue-400 transition flex items-center gap-1.5"><i class="fa-solid fa-terminal text-emerald-500"></i> Kod Stüdyosu</a>
-                <a href="tools.html" class="hover:text-blue-400 transition flex items-center gap-1.5"><i class="fa-solid fa-screwdriver-wrench text-purple-400"></i> Araç Suite</a>
                 <a href="#tools-section" class="hover:text-blue-400 transition flex items-center gap-1.5"><i class="fa-solid fa-bolt text-yellow-400"></i> Hızlı Araçlar</a>
                 <a href="#faq-section" class="hover:text-blue-400 transition flex items-center gap-1.5"><i class="fa-solid fa-circle-question text-red-400"></i> S.S.S</a>
             </nav>
         </div>
     </header>
 
-    <!-- Ana İçerik Kapsayıcı -->
-    <main class="relative z-10 max-w-7xl mx-auto px-4 py-6 w-full flex-1 space-y-8">
+    <main class="relative z-10 max-w-7xl mx-auto px-4 py-6 w-full flex-1 space-y-10">
         
         <!-- Hero Section -->
         <section class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
@@ -84,15 +81,15 @@
                 </h1>
 
                 <p class="text-gray-400 text-xs sm:text-sm max-w-lg leading-relaxed">
-                    Müstakil IDE ortamı, devasa betik kütüphanesi ve entegre canlı geliştirici suite araçları ile projelerinize anında yön verin.
+                    Müstakil IDE ortamı, genişletilmiş betik kütüphanesi ve entegre canlı geliştirici suite araçları ile projelerinize yön verin.
                 </p>
 
                 <div class="flex gap-3 pt-1">
                     <a href="studio.html" class="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-xl font-bold transition flex items-center gap-2 text-xs">
                         <i class="fa-solid fa-play"></i> Stüdyoyu Başlat (IDE)
                     </a>
-                    <a href="scripts.html" class="bg-gray-900 border border-gray-800 hover:border-gray-700 text-gray-200 px-4 py-2 rounded-xl font-bold transition flex items-center gap-2 text-xs">
-                        <i class="fa-solid fa-layer-group"></i> Devasa Kütüphane
+                    <a href="#scripts-section" class="bg-gray-900 border border-gray-800 hover:border-gray-700 text-gray-200 px-4 py-2 rounded-xl font-bold transition flex items-center gap-2 text-xs">
+                        <i class="fa-solid fa-layer-group"></i> Kod Bankası
                     </a>
                 </div>
             </div>
@@ -108,59 +105,114 @@
                     </div>
                 </div>
                 <div class="p-3.5 font-mono text-xs leading-relaxed text-gray-300 space-y-1">
-                    <p class="text-gray-500"># MLAOJ Platform Engine Initializing...</p>
+                    <p class="text-gray-500"># MLAOJ Engine Boot Sequence...</p>
                     <p class="text-emerald-400">$ mlaoj status --check</p>
                     <p class="text-blue-300">[INFO] Live IDE Studio: ACTIVE</p>
-                    <p class="text-blue-300">[INFO] Script Bank Database: READY</p>
+                    <p class="text-blue-300">[INFO] Script Bank Database: READY (8 Modules)</p>
                     <p class="text-purple-400 font-bold">$ mlaoj run dev-tools</p>
                     <p class="text-yellow-300">>> Services & Animations Running.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Sayaçlar -->
+        <!-- Düzeltilmiş Sayaçlar -->
         <section class="grid grid-cols-2 md:grid-cols-4 gap-3 bg-gray-900/70 border border-gray-800 rounded-xl p-4 backdrop-blur-md text-center">
             <div>
-                <div class="text-xl sm:text-2xl font-black text-blue-400 font-mono"><span class="counter" data-target="1500">1500</span>+</div>
+                <div class="text-xl sm:text-2xl font-black text-blue-400 font-mono"><span class="counter" data-target="1500">0</span>+</div>
                 <div class="text-[11px] text-gray-400">Hazır Kod & Betik</div>
             </div>
             <div>
-                <div class="text-xl sm:text-2xl font-black text-emerald-400 font-mono"><span class="counter" data-target="100">100</span>%</div>
+                <div class="text-xl sm:text-2xl font-black text-emerald-400 font-mono"><span class="counter" data-target="100">0</span>%</div>
                 <div class="text-[11px] text-gray-400">Ücretsiz & Açık Kaynak</div>
             </div>
             <div>
-                <div class="text-xl sm:text-2xl font-black text-purple-400 font-mono"><span class="counter" data-target="24">24</span>/7</div>
+                <div class="text-xl sm:text-2xl font-black text-purple-400 font-mono"><span class="counter" data-target="24">0</span>/7</div>
                 <div class="text-[11px] text-gray-400">IDE & Stüdyo Erişimi</div>
             </div>
             <div>
-                <div class="text-xl sm:text-2xl font-black text-indigo-400 font-mono"><span class="counter" data-target="500">500</span>+</div>
+                <div class="text-xl sm:text-2xl font-black text-indigo-400 font-mono"><span class="counter" data-target="500">0</span>+</div>
                 <div class="text-[11px] text-gray-400">Aktif Geliştirici</div>
             </div>
         </section>
 
-        <!-- Yol Haritası (Ekranın Sığmayan Kısmı Düzeltildi) -->
-        <section class="space-y-3">
-            <h2 class="text-lg font-bold text-white border-l-4 border-blue-500 pl-3">Gelişim Yol Haritası</h2>
+        <!-- Kütüphane / Kod Bankası (Genişletilmiş 8 Kod) -->
+        <section id="scripts-section" class="space-y-4">
+            <div class="border-l-4 border-blue-500 pl-3">
+                <h2 class="text-lg font-bold text-white">Hazır Betik & Kod Bankası</h2>
+                <p class="text-[11px] text-gray-400">Projelerinizde doğrudan kullanabileceğiniz hazır modüller.</p>
+            </div>
+
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-                <div class="bg-gray-900/80 border border-gray-800 rounded-xl p-3.5">
-                    <div class="text-[10px] font-bold text-blue-400 font-mono mb-1">ADIM 1</div>
-                    <h3 class="font-bold text-xs text-white mb-1">Terminal Kullanımı</h3>
-                    <p class="text-[11px] text-gray-400 leading-tight">Linux ve Termux ortamlarında komut satırı temellerini öğrenin.</p>
+                <div class="bg-gray-900/80 border border-gray-800 rounded-xl p-3.5 space-y-2">
+                    <div class="flex justify-between items-center text-xs">
+                        <span class="text-yellow-400 font-bold font-mono">PYTHON</span>
+                        <i class="fa-brands fa-python text-yellow-400"></i>
+                    </div>
+                    <h3 class="font-bold text-xs text-white">Discord Bot Başlatıcı</h3>
+                    <p class="text-[11px] text-gray-400">discord.py v2 tabanlı temel bot altyapısı ve event dinleyici.</p>
                 </div>
-                <div class="bg-gray-900/80 border border-gray-800 rounded-xl p-3.5">
-                    <div class="text-[10px] font-bold text-emerald-400 font-mono mb-1">ADIM 2</div>
-                    <h3 class="font-bold text-xs text-white mb-1">Python & Botlar</h3>
-                    <p class="text-[11px] text-gray-400 leading-tight">Veri madenciliği ve otomatik Discord bot mimarileri yazın.</p>
+
+                <div class="bg-gray-900/80 border border-gray-800 rounded-xl p-3.5 space-y-2">
+                    <div class="flex justify-between items-center text-xs">
+                        <span class="text-green-400 font-bold font-mono">BASH / TERMUX</span>
+                        <i class="fa-solid fa-terminal text-green-400"></i>
+                    </div>
+                    <h3 class="font-bold text-xs text-white">Termux Oto Kurulum</h3>
+                    <p class="text-[11px] text-gray-400">Python, Git, Node.js ve gerekli ortamları tek komutla kuran betik.</p>
                 </div>
-                <div class="bg-gray-900/80 border border-gray-800 rounded-xl p-3.5">
-                    <div class="text-[10px] font-bold text-purple-400 font-mono mb-1">ADIM 3</div>
-                    <h3 class="font-bold text-xs text-white mb-1">Web Geliştirme</h3>
-                    <p class="text-[11px] text-gray-400 leading-tight">HTML5 ve Tailwind CSS ile modern duyarlı arayüzler kurun.</p>
+
+                <div class="bg-gray-900/80 border border-gray-800 rounded-xl p-3.5 space-y-2">
+                    <div class="flex justify-between items-center text-xs">
+                        <span class="text-yellow-300 font-bold font-mono">JAVASCRIPT</span>
+                        <i class="fa-brands fa-js text-yellow-300"></i>
+                    </div>
+                    <h3 class="font-bold text-xs text-white">Canvas Parçacık Motoru</h3>
+                    <p class="text-[11px] text-gray-400">Web siteleri için özelleştirilebilir interaktif ağ animasyonu.</p>
                 </div>
-                <div class="bg-gray-900/80 border border-gray-800 rounded-xl p-3.5">
-                    <div class="text-[10px] font-bold text-yellow-400 font-mono mb-1">ADIM 4</div>
-                    <h3 class="font-bold text-xs text-white mb-1">Canlıya Alma</h3>
-                    <p class="text-[11px] text-gray-400 leading-tight">GitHub Pages üzerinden projelerinizi anında yayınlayın.</p>
+
+                <div class="bg-gray-900/80 border border-gray-800 rounded-xl p-3.5 space-y-2">
+                    <div class="flex justify-between items-center text-xs">
+                        <span class="text-blue-400 font-bold font-mono">CSS3 / TAILWIND</span>
+                        <i class="fa-brands fa-css3-alt text-blue-400"></i>
+                    </div>
+                    <h3 class="font-bold text-xs text-white">Neon Glow Efektleri</h3>
+                    <p class="text-[11px] text-gray-400">Metin ve kart yapıları için saf CSS parlama animasyonları.</p>
+                </div>
+
+                <div class="bg-gray-900/80 border border-gray-800 rounded-xl p-3.5 space-y-2">
+                    <div class="flex justify-between items-center text-xs">
+                        <span class="text-yellow-400 font-bold font-mono">PYTHON</span>
+                        <i class="fa-brands fa-python text-yellow-400"></i>
+                    </div>
+                    <h3 class="font-bold text-xs text-white">Async Web Scraper</h3>
+                    <p class="text-[11px] text-gray-400">aiohttp ve BeautifulSoup ile yüksek hızlı veri madenciliği.</p>
+                </div>
+
+                <div class="bg-gray-900/80 border border-gray-800 rounded-xl p-3.5 space-y-2">
+                    <div class="flex justify-between items-center text-xs">
+                        <span class="text-purple-400 font-bold font-mono">SECURITY</span>
+                        <i class="fa-solid fa-shield-halved text-purple-400"></i>
+                    </div>
+                    <h3 class="font-bold text-xs text-white">SHA-256 Hash Doğrulayıcı</h3>
+                    <p class="text-[11px] text-gray-400">Veri bütünlüğünü doğrulamak için istemci taraflı şifreleme modülü.</p>
+                </div>
+
+                <div class="bg-gray-900/80 border border-gray-800 rounded-xl p-3.5 space-y-2">
+                    <div class="flex justify-between items-center text-xs">
+                        <span class="text-yellow-300 font-bold font-mono">JAVASCRIPT</span>
+                        <i class="fa-brands fa-js text-yellow-300"></i>
+                    </div>
+                    <h3 class="font-bold text-xs text-white">LocalStorage Saklayıcı</h3>
+                    <p class="text-[11px] text-gray-400">Kullanıcı tercihlerini yerel hafızada yöneten yardımcı fonksiyon.</p>
+                </div>
+
+                <div class="bg-gray-900/80 border border-gray-800 rounded-xl p-3.5 space-y-2">
+                    <div class="flex justify-between items-center text-xs">
+                        <span class="text-emerald-400 font-bold font-mono">NODE.JS</span>
+                        <i class="fa-brands fa-node-js text-emerald-400"></i>
+                    </div>
+                    <h3 class="font-bold text-xs text-white">Express API Şablonu</h3>
+                    <p class="text-[11px] text-gray-400">RESTful mimariye uygun hızlı API sunucu başlangıç şablonu.</p>
                 </div>
             </div>
         </section>
@@ -169,7 +221,6 @@
         <section id="tools-section" class="space-y-3">
             <div class="border-l-4 border-purple-500 pl-3">
                 <h2 class="text-lg font-bold text-white">Canlı Geliştirici Araçları</h2>
-                <p class="text-[11px] text-gray-400">Sayfadan ayrılmadan kullanabileceğiniz hızlı modüller.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -177,7 +228,7 @@
                     <h3 class="font-bold text-xs text-purple-400 mb-2.5 flex items-center gap-2">
                         <i class="fa-solid fa-lock"></i> Base64 Şifreleyici
                     </h3>
-                    <input type="text" id="b64Input" placeholder="Metni girin..." class="w-full bg-gray-950 border border-gray-800 rounded-lg p-2 text-xs text-gray-200 mb-2 focus:outline-none focus:border-purple-500">
+                    <input type="text" id="b64Input" placeholder="Metni girin..." class="w-full bg-gray-950 border border-gray-800 rounded-lg p-2 text-xs text-gray-200 mb-2 focus:outline-none">
                     <button onclick="convertBase64()" class="w-full bg-purple-600 hover:bg-purple-700 text-white text-xs font-bold py-1.5 rounded-lg transition">Şifrele / Çöz</button>
                     <div id="b64Result" class="mt-2 bg-gray-950 p-2 rounded-lg text-[11px] font-mono text-emerald-400 break-all min-h-[32px]">Sonuç bekleniyor...</div>
                 </div>
@@ -204,35 +255,15 @@
             </div>
         </section>
 
-        <!-- SSS -->
-        <section id="faq-section" class="space-y-3">
-            <div class="border-l-4 border-red-500 pl-3">
-                <h2 class="text-lg font-bold text-white">Sıkça Sorulan Sorular</h2>
-            </div>
-            <div class="space-y-2">
-                <div class="bg-gray-900 border border-gray-800 rounded-xl overflow-hidden">
-                    <button onclick="toggleFaq('faq1')" class="w-full p-3 text-left font-bold text-xs text-white flex justify-between items-center hover:bg-gray-800/40">
-                        <span>MLAOJ servisleri tamamen ücretsiz mi?</span>
-                        <i class="fa-solid fa-chevron-down text-xs text-gray-400"></i>
-                    </button>
-                    <div id="faq1" class="hidden p-3 pt-0 text-xs text-gray-400 border-t border-gray-800/40">
-                        Evet, IDE stüdyosu, kod arşivi ve araçların tamamı ücretsizdir.
-                    </div>
-                </div>
-            </div>
-        </section>
-
     </main>
 
-    <!-- Kayan Şerit -->
+    <!-- Kayan Şerit Barı -->
     <div class="w-full bg-gray-900/80 border-y border-gray-800 py-2 overflow-hidden relative z-10">
         <div class="animate-marquee font-mono text-xs text-gray-400 gap-8">
             <span><i class="fa-brands fa-python text-yellow-400"></i> Python: async / await Scraper</span>
             <span><i class="fa-solid fa-terminal text-green-400"></i> Termux: pkg update && pkg upgrade</span>
             <span><i class="fa-brands fa-js text-yellow-300"></i> JS: EventLoop Optimization</span>
             <span><i class="fa-solid fa-shield-halved text-red-400"></i> SEC: SHA-256 Engine</span>
-            <span><i class="fa-brands fa-python text-yellow-400"></i> Python: async / await Scraper</span>
-            <span><i class="fa-solid fa-terminal text-green-400"></i> Termux: pkg update && pkg upgrade</span>
         </div>
     </div>
 
@@ -240,7 +271,7 @@
         © 2026 MLAOJ Platform. Tüm Hakları Saklıdır.
     </footer>
 
-    <!-- Doğrudan Çalışan Temiz JS -->
+    <!-- JS Mantığı -->
     <script>
         // Canvas Animasyonu
         const canvas = document.getElementById('bgCanvas');
@@ -292,144 +323,33 @@
         }
         drawCanvas();
 
+        // Garantili Sayaç Animasyonu
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'), 10);
+                let current = 0;
+                const increment = Math.max(1, Math.ceil(target / 50));
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        counter.innerText = target;
+                        clearInterval(timer);
+                    } else {
+                        counter.innerText = current;
+                    }
+                }, 30);
+            });
+        }
+
+        // Doğrudan çalıştırma
+        setTimeout(animateCounters, 200);
+
         // Araç Metotları
         function convertBase64() {
             const input = document.getElementById('b64Input').value;
             try {
                 document.getElementById('b64Result').innerText = btoa(input);
             } catch (e) {
-                document.getElementById('b64Result').innerText = "Hata!";
-            }
-        }
-
-        function generatePass() {
-            const len = document.getElementById('passLen').value;
-            const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()";
-            let res = "";
-            for (let i = 0; i < len; i++) res += chars.charAt(Math.floor(Math.random() * chars.length));
-            document.getElementById('passResult').innerText = res;
-        }
-
-        function formatJSON() {
-            try {
-                JSON.parse(document.getElementById('jsonInput').value);
-                alert("Geçerli JSON!");
-            } catch (e) {
-                alert("Hatalı JSON!");
-            }
-        }
-
-        function toggleFaq(id) {
-            document.getElementById(id).classList.toggle('hidden');
-        }
-    <script>
-    // Canvas Arka Plan Animasyonu
-    const canvas = document.getElementById('bgCanvas');
-    const ctx = canvas.getContext('2d');
-    let width = canvas.width = window.innerWidth;
-    let height = canvas.height = window.innerHeight;
-
-    window.addEventListener('resize', () => {
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
-    });
-
-    const particles = Array.from({ length: 25 }, () => ({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 1,
-        vy: (Math.random() - 0.5) * 1,
-        radius: Math.random() * 2 + 1
-    }));
-
-    function drawCanvas() {
-        ctx.clearRect(0, 0, width, height);
-        ctx.fillStyle = 'rgba(59, 130, 246, 0.4)';
-        ctx.strokeStyle = 'rgba(59, 130, 246, 0.08)';
-
-        particles.forEach((p, i) => {
-            p.x += p.vx;
-            p.y += p.vy;
-
-            if (p.x < 0 || p.x > width) p.vx *= -1;
-            if (p.y < 0 || p.y > height) p.vy *= -1;
-
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-            ctx.fill();
-
-            for (let j = i + 1; j < particles.length; j++) {
-                const p2 = particles[j];
-                const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
-                if (dist < 100) {
-                    ctx.beginPath();
-                    ctx.moveTo(p.x, p.y);
-                    ctx.lineTo(p2.x, p2.y);
-                    ctx.stroke();
-                }
-            }
-        });
-        requestAnimationFrame(drawCanvas);
-    }
-    drawCanvas();
-
-    // SAYAÇ ANİMASYONU (Canlı Artış İşlevi)
-    function startCounters() {
-        const counters = document.querySelectorAll('.counter');
-        counters.forEach(counter => {
-            const target = +counter.getAttribute('data-target');
-            let count = 0;
-            const speed = target / 40; // Sayma hızı
-
-            const updateCount = () => {
-                count += speed;
-                if (count < target) {
-                    counter.innerText = Math.ceil(count);
-                    setTimeout(updateCount, 25);
-                } else {
-                    counter.innerText = target;
-                }
-            };
-            updateCount();
-        });
-    }
-
-    // Sayfa Yüklendiğinde Animasyon Başlasın
-    document.addEventListener("DOMContentLoaded", startCounters);
-    startCounters(); // Bekleme ihtimaline karşı anında tetikleme
-
-    // Araç Kodları
-    function convertBase64() {
-        const input = document.getElementById('b64Input').value;
-        try {
-            document.getElementById('b64Result').innerText = btoa(input);
-        } catch (e) {
-            document.getElementById('b64Result').innerText = "Hata!";
-        }
-    }
-
-    function generatePass() {
-        const len = document.getElementById('passLen').value;
-        const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()";
-        let res = "";
-        for (let i = 0; i < len; i++) res += chars.charAt(Math.floor(Math.random() * chars.length));
-        document.getElementById('passResult').innerText = res;
-    }
-
-    function formatJSON() {
-        try {
-            JSON.parse(document.getElementById('jsonInput').value);
-            alert("Geçerli JSON!");
-        } catch (e) {
-            alert("Hatalı JSON!");
-        }
-    }
-
-    function toggleFaq(id) {
-        document.getElementById(id).classList.toggle('hidden');
-    }
-</script>
-    
-</body>
-    </html>
-    
+                document.getElementById('b64Result').innerText = "Ha
