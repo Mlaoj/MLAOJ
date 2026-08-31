@@ -1,1 +1,91 @@
+<!DOCTYPE html>
+<html lang="tr" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MLAOJ | Studio IDE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @keyframes borderGlow {
+            0%, 100% { border-color: rgba(59, 130, 246, 0.4); }
+            50% { border-color: rgba(168, 85, 247, 0.8); }
+        }
+        .glow-border { animation: borderGlow 3s infinite ease-in-out; }
+    </style>
+</head>
+<body class="bg-gray-950 text-gray-100 font-sans h-full flex flex-col overflow-hidden">
 
+    <header class="border-b border-gray-800 bg-gray-900/90 px-6 py-3 flex justify-between items-center z-10">
+        <div class="flex items-center gap-3">
+            <a href="index.html" class="flex items-center gap-2 text-gray-400 hover:text-white transition">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span class="text-xs font-semibold">Ana Sayfaya Dön</span>
+            </a>
+            <span class="text-gray-700">|</span>
+            <span class="font-bold text-white flex items-center gap-2"><i class="fa-solid fa-code text-blue-400"></i> MLAOJ Live Studio v1.0</span>
+        </div>
+        
+        <div class="flex items-center gap-3">
+            <button onclick="clearEditor()" class="bg-gray-800 hover:bg-gray-700 text-gray-300 text-xs px-3 py-1.5 rounded-lg border border-gray-700 transition">
+                <i class="fa-solid fa-trash"></i> Temizle
+            </button>
+            <button onclick="runStudioCode()" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs px-5 py-1.5 rounded-lg font-bold transition shadow-lg shadow-emerald-600/20 flex items-center gap-2 hover:scale-105">
+                <i class="fa-solid fa-play"></i> Kodu Çalıştır
+            </button>
+        </div>
+    </header>
+
+    <main class="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-2 p-3 overflow-hidden">
+        <div class="flex flex-col bg-gray-900 border border-gray-800 rounded-xl overflow-hidden glow-border">
+            <div class="bg-gray-950 px-4 py-2 border-b border-gray-800 flex justify-between items-center">
+                <span class="text-xs font-mono text-gray-400"><i class="fa-regular fa-file-code text-blue-400"></i> index.html / main.js</span>
+                <span class="text-[10px] bg-blue-500/10 text-blue-400 px-2 py-0.5 rounded">HTML/CSS/JS Mode</span>
+            </div>
+            <textarea id="studioInput" class="flex-1 w-full bg-gray-950 p-4 font-mono text-sm text-green-400 focus:outline-none resize-none leading-relaxed" spellcheck="false" placeholder="Kodlarınızı buraya yazın..."><!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { background: #0f172a; color: white; font-family: sans-serif; display: flex; justify-content: center; items: center; height: 100vh; margin: 0; }
+  .card { background: #1e293b; padding: 2rem; border-radius: 1rem; border: 1px solid #334155; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+  button { background: #3b82f6; color: white; border: none; padding: 10px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.2s; }
+  button:hover { background: #2563eb; transform: scale(1.05); }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h1>🚀 MLAOJ IDE Çalışıyor!</h1>
+    <p>Canlı önizleme panelinde değişiklikleri anında görün.</p>
+    <button onclick="alert('Studio Entegrasyonu Başarılı!')">Test Et</button>
+  </div>
+</body>
+</html></textarea>
+        </div>
+
+        <div class="flex flex-col bg-gray-900 border border-gray-800 rounded-xl overflow-hidden">
+            <div class="bg-gray-950 px-4 py-2 border-b border-gray-800 flex justify-between items-center">
+                <span class="text-xs font-mono text-gray-400"><i class="fa-solid fa-desktop text-purple-400"></i> Live Render Engine</span>
+                <span class="text-[10px] bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded">Active Preview</span>
+            </div>
+            <div class="flex-1 bg-white overflow-hidden">
+                <iframe id="studioPreview" class="w-full h-full border-none"></iframe>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function runStudioCode() {
+            const code = document.getElementById('studioInput').value;
+            const preview = document.getElementById('studioPreview');
+            preview.contentWindow.document.open();
+            preview.contentWindow.document.write(code);
+            preview.contentWindow.document.close();
+        }
+        function clearEditor() {
+            document.getElementById('studioInput').value = '';
+            runStudioCode();
+        }
+        window.onload = runStudioCode;
+    </script>
+</body>
+</html>
