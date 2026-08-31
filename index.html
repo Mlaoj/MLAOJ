@@ -7,46 +7,49 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Kayan Şerit Animasyonu */
         @keyframes marquee {
             0% { transform: translateX(0%); }
             100% { transform: translateX(-50%); }
         }
         .animate-marquee {
-            display: flex;
-            width: 200%;
-            animation: marquee 22s linear infinite;
+            display: flex !important;
+            width: 200% !important;
+            animation: marquee 20s linear infinite !important;
         }
-        .animate-marquee:hover { animation-play-state: paused; }
+        .animate-marquee:hover { animation-play-state: paused !important; }
 
+        /* Parlayan Metin Animasyonu */
         @keyframes glowText {
-            0%, 100% { filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.5)); }
-            50% { filter: drop-shadow(0 0 18px rgba(168, 85, 247, 0.8)); }
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.6)); }
+            50% { filter: drop-shadow(0 0 20px rgba(168, 85, 247, 0.9)); }
         }
-        .glow-effect { animation: glowText 3s infinite ease-in-out; }
+        .glow-effect { animation: glowText 2.5s infinite ease-in-out; }
 
-        canvas#bgCanvas {
+        /* Arka Plan Canlı Canvas */
+        #bgCanvas {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            width: 100vw;
+            height: 100vh;
             pointer-events: none;
             z-index: 0;
         }
 
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #030712; }
-        ::-webkit-scrollbar-thumb { background: #1f2937; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb { background: #1f2937; border-radius: 4px; }
     </style>
 </head>
 <body class="bg-gray-950 text-gray-100 font-sans min-h-screen flex flex-col justify-between overflow-x-hidden relative">
 
-    <!-- Canlı Parçacık Arka Planı -->
+    <!-- Canlı Ağ Animasyonu Arka Planı -->
     <canvas id="bgCanvas"></canvas>
 
     <!-- Header / Navigasyon Barı -->
     <header class="border-b border-gray-800/80 bg-gray-900/90 backdrop-blur-md sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-5 py-3.5 flex justify-between items-center">
+        <div class="max-w-7xl mx-auto px-5 py-3 flex justify-between items-center">
             <div class="flex items-center gap-3">
                 <div class="w-9 h-9 rounded-full bg-blue-600/20 border border-blue-500/50 flex items-center justify-center font-bold text-blue-400">M</div>
                 <span class="font-black text-lg tracking-wider text-white">MLAOJ <span class="text-blue-500 text-xs font-mono">v7.0</span></span>
@@ -62,16 +65,16 @@
         </div>
     </header>
 
-    <!-- Ana İçerik Kapsayıcısı -->
+    <!-- Ana Gövde Kapsayıcısı -->
     <main class="relative z-10 max-w-7xl mx-auto px-5 py-8 w-full flex-1 space-y-12">
         
         <!-- Hero Section -->
         <section class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div class="space-y-5">
                 <div class="inline-flex items-center gap-2 bg-gray-900 border border-gray-800 text-xs text-gray-300 px-3 py-1 rounded-full">
-                    <span class="flex h-2 w-2 relative">
+                    <span class="flex h-2.5 w-2.5 relative">
                       <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                      <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                      <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
                     </span>
                     <span class="font-mono text-emerald-400 font-semibold">Sistem Çevrimiçi</span>
                     <span class="text-gray-700">|</span>
@@ -97,7 +100,7 @@
                 </div>
             </div>
 
-            <!-- Terminal Alanı -->
+            <!-- Terminal Simülatörü -->
             <div class="bg-gray-900/90 border border-gray-800 rounded-2xl overflow-hidden shadow-xl backdrop-blur-md">
                 <div class="bg-gray-950 px-4 py-2.5 border-b border-gray-800 flex items-center justify-between">
                     <div class="flex items-center gap-1.5">
@@ -113,7 +116,7 @@
                     <p class="text-blue-300">[INFO] Live IDE Studio: ACTIVE</p>
                     <p class="text-blue-300">[INFO] Script Bank Database: READY</p>
                     <p class="text-purple-400 font-bold">$ mlaoj run dev-tools</p>
-                    <p class="text-yellow-300">>> Services Loaded Successfully.</p>
+                    <p class="text-yellow-300">>> Services & Animations Running.</p>
                 </div>
             </div>
         </section>
@@ -138,7 +141,7 @@
             </div>
         </section>
 
-        <!-- Gelişim Yol Haritası -->
+        <!-- Yol Haritası -->
         <section class="space-y-4">
             <h2 class="text-xl font-bold text-white border-l-4 border-blue-500 pl-3">Gelişim Yol Haritası</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -165,7 +168,7 @@
             </div>
         </section>
 
-        <!-- Canlı Geliştirici Araçları (Ekranındaki Kısım) -->
+        <!-- Canlı Geliştirici Araçları -->
         <section id="tools-section" class="space-y-4">
             <div class="border-l-4 border-purple-500 pl-3">
                 <h2 class="text-xl font-bold text-white">Canlı Geliştirici Araçları</h2>
@@ -256,79 +259,86 @@
         © 2026 MLAOJ Platform. Tüm Hakları Saklıdır.
     </footer>
 
-    <!-- Script Kodları -->
+    <!-- Script Kodları (Canvas + Sayac + Araclar) -->
     <script>
-        const canvas = document.getElementById('bgCanvas');
-        const ctx = canvas.getContext('2d');
-        let width = canvas.width = window.innerWidth;
-        let height = canvas.height = window.innerHeight;
+        // Arka Plan Canvas Animasyonu
+        window.addEventListener('load', () => {
+            const canvas = document.getElementById('bgCanvas');
+            const ctx = canvas.getContext('2d');
+            let width = canvas.width = window.innerWidth;
+            let height = canvas.height = window.innerHeight;
 
-        window.addEventListener('resize', () => {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-        });
-
-        const particles = Array.from({ length: 30 }, () => ({
-            x: Math.random() * width,
-            y: Math.random() * height,
-            vx: (Math.random() - 0.5) * 0.8,
-            vy: (Math.random() - 0.5) * 0.8,
-            radius: Math.random() * 2 + 1
-        }));
-
-        function drawCanvas() {
-            ctx.clearRect(0, 0, width, height);
-            ctx.fillStyle = 'rgba(59, 130, 246, 0.4)';
-            ctx.strokeStyle = 'rgba(59, 130, 246, 0.05)';
-
-            particles.forEach((p, i) => {
-                p.x += p.vx;
-                p.y += p.vy;
-
-                if (p.x < 0 || p.x > width) p.vx *= -1;
-                if (p.y < 0 || p.y > height) p.vy *= -1;
-
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-                ctx.fill();
-
-                for (let j = i + 1; j < particles.length; j++) {
-                    const p2 = particles[j];
-                    const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
-                    if (dist < 110) {
-                        ctx.beginPath();
-                        ctx.moveTo(p.x, p.y);
-                        ctx.lineTo(p2.x, p2.y);
-                        ctx.stroke();
-                    }
-                }
+            window.addEventListener('resize', () => {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
             });
-            requestAnimationFrame(drawCanvas);
-        }
-        drawCanvas();
 
-        const counters = document.querySelectorAll('.counter');
-        counters.forEach(counter => {
-            const updateCount = () => {
-                const target = +counter.getAttribute('data-target');
-                const count = +counter.innerText;
-                const inc = target / 30;
+            const particles = Array.from({ length: 35 }, () => ({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                vx: (Math.random() - 0.5) * 1.2,
+                vy: (Math.random() - 0.5) * 1.2,
+                radius: Math.random() * 2 + 1
+            }));
 
-                if (count < target) {
-                    counter.innerText = Math.ceil(count + inc);
-                    setTimeout(updateCount, 35);
-                } else {
-                    counter.innerText = target;
-                }
-            };
-            updateCount();
+            function drawCanvas() {
+                ctx.clearRect(0, 0, width, height);
+                ctx.fillStyle = 'rgba(59, 130, 246, 0.5)';
+                ctx.strokeStyle = 'rgba(59, 130, 246, 0.08)';
+
+                particles.forEach((p, i) => {
+                    p.x += p.vx;
+                    p.y += p.vy;
+
+                    if (p.x < 0 || p.x > width) p.vx *= -1;
+                    if (p.y < 0 || p.y > height) p.vy *= -1;
+
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const p2 = particles[j];
+                        const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+                        if (dist < 120) {
+                            ctx.beginPath();
+                            ctx.moveTo(p.x, p.y);
+                            ctx.lineTo(p2.x, p2.y);
+                            ctx.stroke();
+                        }
+                    }
+                });
+                requestAnimationFrame(drawCanvas);
+            }
+            drawCanvas();
+
+            // Sayaç Animasyonları
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    const inc = target / 35;
+
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + inc);
+                        setTimeout(updateCount, 30);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCount();
+            });
         });
 
+        // Ping Değişimi
         setInterval(() => {
             const ping = Math.floor(Math.random() * 8) + 10;
-            document.getElementById('pingCounter').innerText = ping + 'ms';
+            const el = document.getElementById('pingCounter');
+            if(el) el.innerText = ping + 'ms';
         }, 3000);
 
+        // Hızlı Araç İşlevleri
         function convertBase64() {
             const input = document.getElementById('b64Input').value;
             try {
@@ -340,20 +350,4 @@
 
         function generatePass() {
             const len = document.getElementById('passLen').value;
-            const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()";
-            let res = "";
-            for (let i = 0; i < len; i++) res += chars.charAt(Math.floor(Math.random() * chars.length));
-            document.getElementById('passResult').innerText = res;
-        }
-
-        function formatJSON() {
-            try {
-                JSON.parse(document.getElementById('jsonInput').value);
-                alert("Geçerli JSON!");
-            } catch (e) {
-                alert("Hatalı JSON!");
-            }
-        }
-
-        function toggleFaq(id) {
-            document.getElementById(id).classList.toggle('hid
+            const chars = "abcdefghij
