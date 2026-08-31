@@ -12,7 +12,6 @@
     <header class="border-b border-gray-800 bg-gray-900/50 backdrop-blur sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <!-- Düzeltilmiş Logo -->
                 <img src="MLAOJ_20260831_145609_0000-2.jpg" alt="MLAOJ Logo" class="w-10 h-10 object-cover rounded-full border border-gray-700">
                 <span class="font-bold text-xl tracking-wider">MLAOJ</span>
             </div>
@@ -57,25 +56,26 @@
         </div>
     </section>
 
-    <!-- Script Paylaşım ve Kod Kopyalama Bölümü -->
+    <!-- Script Paylaşım Bölümü -->
     <section id="scripts" class="max-w-6xl mx-auto px-4 py-12">
         <h2 class="text-2xl font-bold mb-6 text-white border-l-4 border-blue-500 pl-3">Popüler Betikler & Komutlar</h2>
         
+        <!-- Script 1 -->
         <div class="bg-gray-900 border border-gray-800 rounded-xl p-5 mb-6">
             <div class="flex justify-between items-center mb-3">
-                <span class="text-sm font-semibold text-gray-300">Termux / Linux Hızlı Kurulum Scripti</span>
+                <span class="text-sm font-semibold text-gray-300">Termux Python & Discord.py Kurulumu</span>
                 <button onclick="copyCode('code1', this)" class="bg-gray-800 hover:bg-gray-700 text-xs px-3 py-1.5 rounded border border-gray-700 text-gray-200 transition">Kopyala</button>
             </div>
-            <pre class="bg-gray-950 p-4 rounded-lg overflow-x-auto text-sm text-green-400 font-mono" id="code1">pkg update && pkg upgrade -y && pkg install python git -y</pre>
+            <pre class="bg-gray-950 p-4 rounded-lg overflow-x-auto text-sm text-green-400 font-mono" id="code1">pkg update && pkg upgrade -y && pkg install python git -y && pip install discord.py</pre>
         </div>
 
-        <div class="bg-gray-900 border border-gray-800 rounded-xl p-5">
+        <!-- Script 2 -->
+        <div class="bg-gray-900 border border-gray-800 rounded-xl p-5 mb-6">
             <div class="flex justify-between items-center mb-3">
-                <span class="text-sm font-semibold text-gray-300">Python Şifre Oluşturucu Betiği</span>
+                <span class="text-sm font-semibold text-gray-300">Termux Bot Başlatma Komutu</span>
                 <button onclick="copyCode('code2', this)" class="bg-gray-800 hover:bg-gray-700 text-xs px-3 py-1.5 rounded border border-gray-700 text-gray-200 transition">Kopyala</button>
             </div>
-            <pre class="bg-gray-950 p-4 rounded-lg overflow-x-auto text-sm text-blue-300 font-mono" id="code2">import random, string
-print(''.join(random.choices(string.ascii_letters + string.digits, k=16)))</pre>
+            <pre class="bg-gray-950 p-4 rounded-lg overflow-x-auto text-sm text-blue-300 font-mono" id="code2">python bot.py</pre>
         </div>
     </section>
 
@@ -83,7 +83,7 @@ print(''.join(random.choices(string.ascii_letters + string.digits, k=16)))</pre>
         © 2026 MLAOJ. Tüm hakları saklıdır.
     </footer>
 
-    <!-- Kopyalama Fonksiyonu -->
+    <!-- Kopyalama Scripti -->
     <script>
         function copyCode(id, btn) {
             const code = document.getElementById(id).innerText;
