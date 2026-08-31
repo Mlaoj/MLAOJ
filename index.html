@@ -7,7 +7,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* CSS Animasyonları */
         @keyframes marquee {
             0% { transform: translateX(0%); }
             100% { transform: translateX(-50%); }
@@ -38,7 +37,7 @@
 </head>
 <body class="bg-gray-950 text-gray-100 font-sans flex flex-col min-h-screen relative overflow-x-hidden selection:bg-blue-600 selection:text-white">
 
-    <!-- ÖZELLİK 1: Canlı İnteraktif Arka Plan Canvas -->
+    <!-- İnteraktif Arka Plan Canvas -->
     <canvas id="bgCanvas"></canvas>
 
     <!-- Header -->
@@ -46,51 +45,109 @@
         <div class="max-w-7xl mx-auto px-4 py-3.5 flex justify-between items-center">
             <div class="flex items-center gap-3">
                 <img src="file_00000000e57c81f48430089ff2017f8a.png" class="w-10 h-10 object-cover rounded-full border border-blue-500/50 shadow-lg shadow-blue-500/20 transition transform hover:rotate-12">
-                <span class="font-black text-2xl tracking-wider text-white">MLAOJ <span class="text-blue-500 text-xs font-mono">v6.0</span></span>
+                <span class="font-black text-2xl tracking-wider text-white">MLAOJ <span class="text-blue-500 text-xs font-mono">v6.5</span></span>
             </div>
             
             <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
                 <a href="scripts.html" class="hover:text-blue-400 transition flex items-center gap-1.5"><i class="fa-solid fa-code text-blue-500 fa-beat"></i> Kod Bankası</a>
                 <a href="studio.html" class="hover:text-blue-400 transition flex items-center gap-1.5"><i class="fa-solid fa-terminal text-emerald-500 fa-bounce"></i> Kod Stüdyosu</a>
                 <a href="#quick-tools" class="hover:text-blue-400 transition flex items-center gap-1.5"><i class="fa-solid fa-screwdriver-wrench text-purple-400"></i> Mini Araçlar</a>
-                <button onclick="toggleDiscordModal()" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white px-4 py-2 rounded-lg transition font-semibold text-xs flex items-center gap-2 shadow-lg shadow-blue-600/30 hover:scale-105">
-                    <i class="fa-brands fa-discord fa-spin" style="--fa-animation-duration: 5s;"></i> Discord
-                </button>
+                <a href="https://discord.gg/km4VaNXSc" target="_blank" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white px-4 py-2 rounded-lg transition font-semibold text-xs flex items-center gap-2 shadow-lg shadow-blue-600/30 hover:scale-105">
+                    <i class="fa-brands fa-discord"></i> Discord
+                </a>
             </nav>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="max-w-5xl mx-auto text-center py-20 px-4 relative z-10">
-        <!-- ÖZELLİK 2: Canlı Sistem Pping ve Statü Paneli -->
-        <div class="inline-flex items-center gap-3 bg-gray-900/90 border border-gray-800 text-xs text-gray-300 px-4 py-2 rounded-full mb-8 shadow-inner backdrop-blur-sm">
-            <span class="flex h-2.5 w-2.5 relative">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
-            </span>
-            <span class="font-mono text-emerald-400 font-semibold">Sistem Çevrimiçi</span>
-            <span class="text-gray-700">|</span>
-            <span class="font-mono text-gray-400">Gecikme: <span id="pingCounter" class="text-blue-400">12ms</span></span>
+    <section class="max-w-7xl mx-auto py-16 px-4 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+            <div class="inline-flex items-center gap-3 bg-gray-900/90 border border-gray-800 text-xs text-gray-300 px-4 py-2 rounded-full mb-6 shadow-inner backdrop-blur-sm">
+                <span class="flex h-2.5 w-2.5 relative">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                </span>
+                <span class="font-mono text-emerald-400 font-semibold">Sistem Çevrimiçi</span>
+                <span class="text-gray-700">|</span>
+                <span class="font-mono text-gray-400">Gecikme: <span id="pingCounter" class="text-blue-400">12ms</span></span>
+            </div>
+
+            <h1 class="text-4xl md:text-6xl font-black tracking-tight mb-6 leading-tight">
+                Geliştirici Gücünü <br><span class="bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-500 bg-clip-text text-transparent glow-effect">Geleceğe Taşıyın</span>
+            </h1>
+            <p class="text-gray-400 text-base mb-8 max-w-xl leading-relaxed">
+                Müstakil IDE ortamı, devasa kütüphane altyapısı ve entegre canlı araç seti ile projelerinizi özgürce üretin.
+            </p>
+
+            <!-- Hızlı Arama Barı Entegrasyonu -->
+            <div class="mb-8 relative max-w-md">
+                <form action="scripts.html" method="GET" class="flex items-center bg-gray-900 border border-gray-800 rounded-xl overflow-hidden focus-within:border-blue-500 transition">
+                    <i class="fa-solid fa-magnifying-glass text-gray-500 pl-4"></i>
+                    <input type="text" name="q" placeholder="Hangi kodu arıyorsunuz? (Termux, Python...)" class="w-full bg-transparent px-3 py-3 text-xs text-gray-200 focus:outline-none">
+                    <button type="submit" class="bg-blue-600 hover:bg-blue-500 text-white text-xs px-4 py-3 font-bold transition">Ara</button>
+                </form>
+            </div>
+
+            <div class="flex gap-4 flex-wrap">
+                <a href="studio.html" class="bg-emerald-600 hover:bg-emerald-500 text-white px-6 py-3.5 rounded-xl font-bold transition shadow-xl shadow-emerald-600/30 flex items-center gap-2 hover:scale-105 text-xs">
+                    <i class="fa-solid fa-play"></i> Stüdyoyu Başlat (IDE)
+                </a>
+                <a href="scripts.html" class="bg-gray-900 border border-gray-800 hover:border-gray-700 text-gray-200 px-6 py-3.5 rounded-xl font-bold transition flex items-center gap-2 hover:scale-105 text-xs">
+                    <i class="fa-solid fa-layer-group"></i> Devasa Kütüphane
+                </a>
+            </div>
         </div>
 
-        <h1 class="text-5xl md:text-7xl font-black tracking-tight mb-6 leading-tight">
-            Geliştirici Gücünü <br><span class="bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-500 bg-clip-text text-transparent glow-effect">Canlı Animasyonlarla Hisset</span>
-        </h1>
-        <p class="text-gray-400 text-base md:text-lg mb-10 max-w-2xl mx-auto leading-relaxed">
-            Müstakil IDE ortamı, devasa kütüphane altyapısı ve entegre canlı araç seti ile projenize hemen yön verin.
-        </p>
-
-        <div class="flex justify-center gap-4 flex-wrap">
-            <a href="studio.html" class="bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-4 rounded-xl font-bold transition shadow-xl shadow-emerald-600/30 flex items-center gap-2.5 hover:scale-105">
-                <i class="fa-solid fa-play"></i> Stüdyoyu Başlat (IDE)
-            </a>
-            <a href="scripts.html" class="bg-gray-900 border border-gray-800 hover:border-gray-700 text-gray-200 px-8 py-4 rounded-xl font-bold transition flex items-center gap-2.5 hover:scale-105">
-                <i class="fa-solid fa-layer-group"></i> Devasa Kütüphane
-            </a>
+        <!-- Canlı Terminal Kod Simülatörü Kartı -->
+        <div class="bg-gray-900/90 border border-gray-800 rounded-2xl overflow-hidden shadow-2xl backdrop-blur-md">
+            <div class="bg-gray-950 px-4 py-3 border-b border-gray-800 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
+                    <span class="w-3 h-3 rounded-full bg-yellow-500/80 inline-block"></span>
+                    <span class="w-3 h-3 rounded-full bg-green-500/80 inline-block"></span>
+                    <span class="text-xs font-mono text-gray-400 ml-2">mlaoj-cli-environment</span>
+                </div>
+                <button onclick="copyTerminalCode()" class="text-xs text-gray-400 hover:text-white transition"><i class="fa-regular fa-copy"></i> Kopyala</button>
+            </div>
+            <div class="p-6 font-mono text-xs leading-relaxed overflow-x-auto text-gray-300">
+                <p class="text-gray-500"># MLAOJ Platform Engine v6.5 Initializing...</p>
+                <p class="text-emerald-400 mt-2">$ mlaoj status --check</p>
+                <p class="text-blue-300">[INFO] Live IDE Studio: ACTIVE</p>
+                <p class="text-blue-300">[INFO] Script Bank Database: READY</p>
+                <p class="text-purple-400 font-bold mt-2">$ mlaoj run dev-tools</p>
+                <p class="text-yellow-300">>> Base64, JSON & KeyGen Services Loaded.</p>
+                <p class="text-gray-400 mt-2">// Projeniz tamamen tarayıcı odaklı ve ücretsiz çalışmaktadır.</p>
+                <div class="mt-4 pt-4 border-t border-gray-800/80 flex justify-between items-center text-[11px] text-gray-500">
+                    <span>STATUS: ONLINE</span>
+                    <span class="text-emerald-400">100% SECURE</span>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- ÖZELLİK 3: Otomatik Kayan Canlı Kod Şeridi -->
+    <!-- Dinamik İstatistik Sayaçları Section -->
+    <section class="max-w-7xl mx-auto px-4 mb-16 relative z-10">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 bg-gray-900/50 border border-gray-800/80 rounded-2xl p-6 backdrop-blur-md text-center">
+            <div>
+                <div class="text-3xl font-black text-blue-400 font-mono"><span class="counter" data-target="1500">0</span>+</div>
+                <div class="text-xs text-gray-400 mt-1">Hazır Kod & Betik</div>
+            </div>
+            <div>
+                <div class="text-3xl font-black text-emerald-400 font-mono"><span class="counter" data-target="100">0</span>%</div>
+                <div class="text-xs text-gray-400 mt-1">Ücretsiz & Açık Kaynak</div>
+            </div>
+            <div>
+                <div class="text-3xl font-black text-purple-400 font-mono"><span class="counter" data-target="24">0</span>/7</div>
+                <div class="text-xs text-gray-400 mt-1">IDE & Stüdyo Erişimi</div>
+            </div>
+            <div>
+                <div class="text-3xl font-black text-indigo-400 font-mono"><span class="counter" data-target="500">0</span>+</div>
+                <div class="text-xs text-gray-400 mt-1">Aktif Geliştirici</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Otomatik Kayan Canlı Kod Şeridi -->
     <div class="w-full bg-gray-900/60 border-y border-gray-800/80 py-3 overflow-hidden relative z-10 backdrop-blur-sm mb-16">
         <div class="animate-marquee font-mono text-xs text-gray-400 gap-12">
             <span><i class="fa-brands fa-python text-yellow-400"></i> Python: async / await Scraper</span>
@@ -104,8 +161,8 @@
         </div>
     </div>
 
-    <!-- ÖZELLİK 4: Canlı Hızlı Geliştirici Mini Araç Paneli -->
-    <section id="quick-tools" class="max-w-6xl mx-auto px-4 mb-20 relative z-10">
+    <!-- Canlı Hızlı Geliştirici Mini Araç Paneli -->
+    <section id="quick-tools" class="max-w-7xl mx-auto px-4 mb-20 relative z-10">
         <div class="border-l-4 border-purple-500 pl-4 mb-8">
             <h2 class="text-3xl font-black text-white">Ücretsiz Hızlı Araçlar</h2>
             <p class="text-xs text-gray-400 mt-1">Tarayıcı üzerinde anında çalışan yardımcı geliştirici araçları.</p>
@@ -140,28 +197,13 @@
         </div>
     </section>
 
-    <!-- ÖZELLİK 5: İnteraktif Discord Modalı -->
-    <div id="discordModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-gray-900 border border-gray-800 rounded-2xl p-8 max-w-md w-full relative shadow-2xl">
-            <button onclick="toggleDiscordModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
-            <div class="text-center">
-                <i class="fa-brands fa-discord text-6xl text-indigo-500 mb-4 animate-bounce"></i>
-                <h3 class="text-2xl font-black text-white mb-2">MLAOJ Topluluğuna Katıl</h3>
-                <p class="text-xs text-gray-400 mb-6">Kod paylaşımı, özel botlar ve teknik destek için Discord sunucumuza davetlisin.</p>
-                <a href="https://discord.gg/km4VaNXSc" target="_blank" class="block w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition shadow-lg shadow-indigo-600/30">
-                    Sunucuya Bağlan
-                </a>
-            </div>
-        </div>
-    </div>
-
     <footer class="mt-auto border-t border-gray-800 py-8 text-center text-xs text-gray-500 relative z-10">
         © 2026 MLAOJ Platform. Tüm Hakları Saklıdır.
     </footer>
 
     <!-- JS Mantıkları ve Arka Plan Animasyonu -->
     <script>
-        // 1. Arka Plan Canvas Ağ Animasyonu
+        // Arka Plan Canvas Ağ Animasyonu
         const canvas = document.getElementById('bgCanvas');
         const ctx = canvas.getContext('2d');
         let width = canvas.width = window.innerWidth;
@@ -211,13 +253,31 @@
         }
         drawCanvas();
 
-        // 2. Canlı Ping Simülasyonu
+        // Sayı Sayıcı Animasyonu (Counter)
+        const counters = document.querySelectorAll('.counter');
+        counters.forEach(counter => {
+            const updateCount = () => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText;
+                const inc = target / 100;
+
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + inc);
+                    setTimeout(updateCount, 20);
+                } else {
+                    counter.innerText = target;
+                }
+            };
+            updateCount();
+        });
+
+        // Canlı Ping Simülasyonu
         setInterval(() => {
             const ping = Math.floor(Math.random() * 8) + 10;
             document.getElementById('pingCounter').innerText = ping + 'ms';
         }, 3000);
 
-        // 3. Mini Araçlar JS
+        // Mini Araçlar JS
         function convertBase64() {
             const input = document.getElementById('b64Input').value;
             try {
@@ -246,10 +306,11 @@
             }
         }
 
-        // 4. Modal
-        function toggleDiscordModal() {
-            document.getElementById('discordModal').classList.toggle('hidden');
+        function copyTerminalCode() {
+            navigator.clipboard.writeText("mlaoj status --check");
+            alert("Terminal komutu kopyalandı!");
         }
     </script>
 </body>
-</html>
+    </html>
+                        
