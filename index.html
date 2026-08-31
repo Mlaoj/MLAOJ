@@ -322,7 +322,114 @@
         function toggleFaq(id) {
             document.getElementById(id).classList.toggle('hidden');
         }
-    </script>
+    <script>
+    // Canvas Arka Plan Animasyonu
+    const canvas = document.getElementById('bgCanvas');
+    const ctx = canvas.getContext('2d');
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+    });
+
+    const particles = Array.from({ length: 25 }, () => ({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 1,
+        vy: (Math.random() - 0.5) * 1,
+        radius: Math.random() * 2 + 1
+    }));
+
+    function drawCanvas() {
+        ctx.clearRect(0, 0, width, height);
+        ctx.fillStyle = 'rgba(59, 130, 246, 0.4)';
+        ctx.strokeStyle = 'rgba(59, 130, 246, 0.08)';
+
+        particles.forEach((p, i) => {
+            p.x += p.vx;
+            p.y += p.vy;
+
+            if (p.x < 0 || p.x > width) p.vx *= -1;
+            if (p.y < 0 || p.y > height) p.vy *= -1;
+
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+            ctx.fill();
+
+            for (let j = i + 1; j < particles.length; j++) {
+                const p2 = particles[j];
+                const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+                if (dist < 100) {
+                    ctx.beginPath();
+                    ctx.moveTo(p.x, p.y);
+                    ctx.lineTo(p2.x, p2.y);
+                    ctx.stroke();
+                }
+            }
+        });
+        requestAnimationFrame(drawCanvas);
+    }
+    drawCanvas();
+
+    // SAYAÇ ANİMASYONU (Canlı Artış İşlevi)
+    function startCounters() {
+        const counters = document.querySelectorAll('.counter');
+        counters.forEach(counter => {
+            const target = +counter.getAttribute('data-target');
+            let count = 0;
+            const speed = target / 40; // Sayma hızı
+
+            const updateCount = () => {
+                count += speed;
+                if (count < target) {
+                    counter.innerText = Math.ceil(count);
+                    setTimeout(updateCount, 25);
+                } else {
+                    counter.innerText = target;
+                }
+            };
+            updateCount();
+        });
+    }
+
+    // Sayfa Yüklendiğinde Animasyon Başlasın
+    document.addEventListener("DOMContentLoaded", startCounters);
+    startCounters(); // Bekleme ihtimaline karşı anında tetikleme
+
+    // Araç Kodları
+    function convertBase64() {
+        const input = document.getElementById('b64Input').value;
+        try {
+            document.getElementById('b64Result').innerText = btoa(input);
+        } catch (e) {
+            document.getElementById('b64Result').innerText = "Hata!";
+        }
+    }
+
+    function generatePass() {
+        const len = document.getElementById('passLen').value;
+        const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()";
+        let res = "";
+        for (let i = 0; i < len; i++) res += chars.charAt(Math.floor(Math.random() * chars.length));
+        document.getElementById('passResult').innerText = res;
+    }
+
+    function formatJSON() {
+        try {
+            JSON.parse(document.getElementById('jsonInput').value);
+            alert("Geçerli JSON!");
+        } catch (e) {
+            alert("Hatalı JSON!");
+        }
+    }
+
+    function toggleFaq(id) {
+        document.getElementById(id).classList.toggle('hidden');
+    }
+</script>
+    
 </body>
     </html>
     
