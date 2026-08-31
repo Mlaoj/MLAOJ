@@ -7,87 +7,249 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @keyframes floatGlow {
-            0%, 100% { transform: translateY(0px) scale(1); opacity: 0.3; }
-            50% { transform: translateY(-20px) scale(1.1); opacity: 0.7; }
+        /* CSS Animasyonları */
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
         }
-        .glow-bg { animation: floatGlow 6s infinite ease-in-out; }
+        .animate-marquee {
+            display: flex;
+            width: 200%;
+            animation: marquee 25s linear infinite;
+        }
+        .animate-marquee:hover { animation-play-state: paused; }
+
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.08); }
+        }
+        .glow-effect { animation: pulseGlow 4s infinite ease-in-out; }
+
+        canvas#bgCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 0;
+        }
     </style>
 </head>
-<body class="bg-gray-950 text-gray-100 font-sans flex flex-col min-h-screen selection:bg-blue-600 selection:text-white">
+<body class="bg-gray-950 text-gray-100 font-sans flex flex-col min-h-screen relative overflow-x-hidden selection:bg-blue-600 selection:text-white">
 
-    <div class="fixed -top-24 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-blue-600/20 via-indigo-600/20 to-purple-600/10 rounded-full blur-3xl pointer-events-none glow-bg"></div>
+    <!-- ÖZELLİK 1: Canlı İnteraktif Arka Plan Canvas -->
+    <canvas id="bgCanvas"></canvas>
 
-    <header class="border-b border-gray-800/80 bg-gray-900/70 backdrop-blur-md sticky top-0 z-50">
+    <!-- Header -->
+    <header class="border-b border-gray-800/80 bg-gray-900/80 backdrop-blur-md sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 py-3.5 flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <img src="file_00000000e57c81f48430089ff2017f8a.png" class="w-10 h-10 object-cover rounded-full border border-gray-700 shadow-lg transition transform hover:rotate-12">
-                <span class="font-black text-2xl tracking-wider text-white">MLAOJ</span>
+                <img src="file_00000000e57c81f48430089ff2017f8a.png" class="w-10 h-10 object-cover rounded-full border border-blue-500/50 shadow-lg shadow-blue-500/20 transition transform hover:rotate-12">
+                <span class="font-black text-2xl tracking-wider text-white">MLAOJ <span class="text-blue-500 text-xs font-mono">v6.0</span></span>
             </div>
             
             <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
-                <a href="scripts.html" class="hover:text-blue-400 transition flex items-center gap-1.5"><i class="fa-solid fa-code text-blue-500"></i> Kod Bankası</a>
-                <a href="studio.html" class="hover:text-blue-400 transition flex items-center gap-1.5"><i class="fa-solid fa-terminal text-emerald-500"></i> Kod Stüdyosu (IDE)</a>
-                <a href="#about" class="hover:text-blue-400 transition">Hakkında</a>
-                <a href="https://discord.gg/km4VaNXSc" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition font-semibold text-xs flex items-center gap-2 shadow-lg shadow-blue-600/20 hover:scale-105">
-                    <i class="fa-brands font-bold fa-discord"></i> Discord
-                </a>
+                <a href="scripts.html" class="hover:text-blue-400 transition flex items-center gap-1.5"><i class="fa-solid fa-code text-blue-500 fa-beat"></i> Kod Bankası</a>
+                <a href="studio.html" class="hover:text-blue-400 transition flex items-center gap-1.5"><i class="fa-solid fa-terminal text-emerald-500 fa-bounce"></i> Kod Stüdyosu</a>
+                <a href="#quick-tools" class="hover:text-blue-400 transition flex items-center gap-1.5"><i class="fa-solid fa-screwdriver-wrench text-purple-400"></i> Mini Araçlar</a>
+                <button onclick="toggleDiscordModal()" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white px-4 py-2 rounded-lg transition font-semibold text-xs flex items-center gap-2 shadow-lg shadow-blue-600/30 hover:scale-105">
+                    <i class="fa-brands fa-discord fa-spin" style="--fa-animation-duration: 5s;"></i> Discord
+                </button>
             </nav>
         </div>
     </header>
 
-    <section class="max-w-5xl mx-auto text-center py-24 px-4 relative">
-        <div class="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-semibold px-4 py-1.5 rounded-full mb-6">
-            <span class="flex h-2 w-2 rounded-full bg-blue-400 animate-pulse"></span> MLAOJ Enterprise v5.0
+    <!-- Hero Section -->
+    <section class="max-w-5xl mx-auto text-center py-20 px-4 relative z-10">
+        <!-- ÖZELLİK 2: Canlı Sistem Pping ve Statü Paneli -->
+        <div class="inline-flex items-center gap-3 bg-gray-900/90 border border-gray-800 text-xs text-gray-300 px-4 py-2 rounded-full mb-8 shadow-inner backdrop-blur-sm">
+            <span class="flex h-2.5 w-2.5 relative">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+            </span>
+            <span class="font-mono text-emerald-400 font-semibold">Sistem Çevrimiçi</span>
+            <span class="text-gray-700">|</span>
+            <span class="font-mono text-gray-400">Gecikme: <span id="pingCounter" class="text-blue-400">12ms</span></span>
         </div>
+
         <h1 class="text-5xl md:text-7xl font-black tracking-tight mb-6 leading-tight">
-            Geliştirici Süreçlerini <br><span class="bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-500 bg-clip-text text-transparent">Geleceğe Taşıyın</span>
+            Geliştirici Gücünü <br><span class="bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-500 bg-clip-text text-transparent glow-effect">Canlı Animasyonlarla Hisset</span>
         </h1>
         <p class="text-gray-400 text-base md:text-lg mb-10 max-w-2xl mx-auto leading-relaxed">
-            Müstakil IDE ortamı, devasa kütüphane altyapısı ve gelişmiş araç seti ile projelerinizi özgürce üretin.
+            Müstakil IDE ortamı, devasa kütüphane altyapısı ve entegre canlı araç seti ile projenize hemen yön verin.
         </p>
+
         <div class="flex justify-center gap-4 flex-wrap">
-            <a href="studio.html" class="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-xl font-bold transition shadow-xl shadow-emerald-600/20 flex items-center gap-2.5 hover:scale-105">
-                <i class="fa-solid fa-play"></i> IDE Kod Stüdyosunu Aç
+            <a href="studio.html" class="bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-4 rounded-xl font-bold transition shadow-xl shadow-emerald-600/30 flex items-center gap-2.5 hover:scale-105">
+                <i class="fa-solid fa-play"></i> Stüdyoyu Başlat (IDE)
             </a>
             <a href="scripts.html" class="bg-gray-900 border border-gray-800 hover:border-gray-700 text-gray-200 px-8 py-4 rounded-xl font-bold transition flex items-center gap-2.5 hover:scale-105">
-                <i class="fa-solid fa-layer-group"></i> Kod Kütüphanesine Git
+                <i class="fa-solid fa-layer-group"></i> Devasa Kütüphane
             </a>
         </div>
     </section>
 
-    <section class="max-w-6xl mx-auto px-4 mb-20">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 bg-gray-900/40 border border-gray-800/80 rounded-2xl p-6 backdrop-blur-md">
-            <div class="text-center border-r border-gray-800/80 last:border-none">
-                <div class="text-3xl font-extrabold text-blue-400">100%</div>
-                <div class="text-xs text-gray-400 mt-1">Açık Kaynak</div>
+    <!-- ÖZELLİK 3: Otomatik Kayan Canlı Kod Şeridi -->
+    <div class="w-full bg-gray-900/60 border-y border-gray-800/80 py-3 overflow-hidden relative z-10 backdrop-blur-sm mb-16">
+        <div class="animate-marquee font-mono text-xs text-gray-400 gap-12">
+            <span><i class="fa-brands fa-python text-yellow-400"></i> Python: async / await Scraper</span>
+            <span><i class="fa-solid fa-terminal text-green-400"></i> Termux: pkg update && pkg upgrade</span>
+            <span><i class="fa-brands fa-js text-yellow-300"></i> JS: EventLoop Optimization</span>
+            <span><i class="fa-solid fa-shield-halved text-red-400"></i> SEC: SHA-256 Hashing Engine</span>
+            <span><i class="fa-brands fa-python text-yellow-400"></i> Python: async / await Scraper</span>
+            <span><i class="fa-solid fa-terminal text-green-400"></i> Termux: pkg update && pkg upgrade</span>
+            <span><i class="fa-brands fa-js text-yellow-300"></i> JS: EventLoop Optimization</span>
+            <span><i class="fa-solid fa-shield-halved text-red-400"></i> SEC: SHA-256 Hashing Engine</span>
+        </div>
+    </div>
+
+    <!-- ÖZELLİK 4: Canlı Hızlı Geliştirici Mini Araç Paneli -->
+    <section id="quick-tools" class="max-w-6xl mx-auto px-4 mb-20 relative z-10">
+        <div class="border-l-4 border-purple-500 pl-4 mb-8">
+            <h2 class="text-3xl font-black text-white">Ücretsiz Hızlı Araçlar</h2>
+            <p class="text-xs text-gray-400 mt-1">Tarayıcı üzerinde anında çalışan yardımcı geliştirici araçları.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Araç 1: Base64 -->
+            <div class="bg-gray-900/80 border border-gray-800 rounded-2xl p-6 backdrop-blur-md hover:border-purple-500/40 transition">
+                <h3 class="font-bold text-sm text-purple-400 mb-3 flex items-center gap-2"><i class="fa-solid fa-lock"></i> Base64 Dönüştürücü</h3>
+                <input type="text" id="b64Input" placeholder="Metin yazın..." class="w-full bg-gray-950 border border-gray-800 rounded-lg p-2.5 text-xs text-gray-200 mb-3 focus:outline-none focus:border-purple-500">
+                <button onclick="convertBase64()" class="w-full bg-purple-600 hover:bg-purple-700 text-white text-xs font-bold py-2 rounded-lg transition">Şifrele / Çöz</button>
+                <div id="b64Result" class="mt-3 bg-gray-950 p-2.5 rounded-lg text-xs font-mono text-green-400 break-all min-h-[38px] flex items-center">Sonuç burada görünecek...</div>
             </div>
-            <div class="text-center border-r border-gray-800/80 last:border-none">
-                <div class="text-3xl font-extrabold text-emerald-400">Canlı IDE</div>
-                <div class="text-xs text-gray-400 mt-1">Split Render</div>
+
+            <!-- Araç 2: Şifre Oluşturucu -->
+            <div class="bg-gray-900/80 border border-gray-800 rounded-2xl p-6 backdrop-blur-md hover:border-blue-500/40 transition">
+                <h3 class="font-bold text-sm text-blue-400 mb-3 flex items-center gap-2"><i class="fa-solid fa-key"></i> Rastgele Güvenli Şifre</h3>
+                <div class="flex items-center gap-2 mb-3">
+                    <input type="number" id="passLen" value="16" min="8" max="64" class="w-20 bg-gray-950 border border-gray-800 rounded-lg p-2.5 text-xs text-gray-200 focus:outline-none">
+                    <span class="text-xs text-gray-400">Karakter Uzunluğu</span>
+                </div>
+                <button onclick="generatePass()" class="w-full bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold py-2 rounded-lg transition">Şifre Üret</button>
+                <div id="passResult" class="mt-3 bg-gray-950 p-2.5 rounded-lg text-xs font-mono text-yellow-400 break-all min-h-[38px] flex items-center">Güvenli Şifre</div>
             </div>
-            <div class="text-center border-r border-gray-800/80 last:border-none">
-                <div class="text-3xl font-extrabold text-purple-400">Dev Arşiv</div>
-                <div class="text-xs text-gray-400 mt-1">Binlerce Kod Kapasiteli</div>
+
+            <!-- Araç 3: JSON Biçimlendirici -->
+            <div class="bg-gray-900/80 border border-gray-800 rounded-2xl p-6 backdrop-blur-md hover:border-emerald-500/40 transition">
+                <h3 class="font-bold text-sm text-emerald-400 mb-3 flex items-center gap-2"><i class="fa-solid fa-code"></i> JSON Validator</h3>
+                <textarea id="jsonInput" placeholder='{"test": "data"}' class="w-full bg-gray-950 border border-gray-800 rounded-lg p-2.5 text-xs text-gray-200 mb-2 h-16 focus:outline-none focus:border-emerald-500 font-mono"></textarea>
+                <button onclick="formatJSON()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold py-2 rounded-lg transition">Kontrol Et</button>
             </div>
+        </div>
+    </section>
+
+    <!-- ÖZELLİK 5: İnteraktif Discord Modalı -->
+    <div id="discordModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-gray-900 border border-gray-800 rounded-2xl p-8 max-w-md w-full relative shadow-2xl">
+            <button onclick="toggleDiscordModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
             <div class="text-center">
-                <div class="text-3xl font-extrabold text-indigo-400">Termux</div>
-                <div class="text-xs text-gray-400 mt-1">Tam Uyumlu</div>
+                <i class="fa-brands fa-discord text-6xl text-indigo-500 mb-4 animate-bounce"></i>
+                <h3 class="text-2xl font-black text-white mb-2">MLAOJ Topluluğuna Katıl</h3>
+                <p class="text-xs text-gray-400 mb-6">Kod paylaşımı, özel botlar ve teknik destek için Discord sunucumuza davetlisin.</p>
+                <a href="https://discord.gg/km4VaNXSc" target="_blank" class="block w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition shadow-lg shadow-indigo-600/30">
+                    Sunucuya Bağlan
+                </a>
             </div>
         </div>
-    </section>
+    </div>
 
-    <section id="about" class="max-w-6xl mx-auto px-4 py-8 mb-16">
-        <div class="bg-gradient-to-r from-gray-900 to-gray-950 border border-gray-800 rounded-2xl p-8">
-            <h2 class="text-2xl font-bold text-white border-l-4 border-blue-500 pl-4 mb-4">MLAOJ Vizyonu</h2>
-            <p class="text-gray-400 text-sm leading-relaxed mb-6">
-                MLAOJ, geliştiricilerin kodlarını güvenli, hızlı ve bağımsız şekilde test etmelerini sağlayan modern bir ekosistemdir. Kişisel veri takibi yapmaz, tamamen tarayıcı odaklı çalışır.
-            </p>
-        </div>
-    </section>
-
-    <footer class="mt-auto border-t border-gray-800 py-8 text-center text-xs text-gray-500">
-        © 2026 MLAOJ Platform. Tüm hakları saklıdır.
+    <footer class="mt-auto border-t border-gray-800 py-8 text-center text-xs text-gray-500 relative z-10">
+        © 2026 MLAOJ Platform. Tüm Hakları Saklıdır.
     </footer>
+
+    <!-- JS Mantıkları ve Arka Plan Animasyonu -->
+    <script>
+        // 1. Arka Plan Canvas Ağ Animasyonu
+        const canvas = document.getElementById('bgCanvas');
+        const ctx = canvas.getContext('2d');
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+
+        const particles = Array.from({ length: 45 }, () => ({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            vx: (Math.random() - 0.5) * 1.2,
+            vy: (Math.random() - 0.5) * 1.2,
+            radius: Math.random() * 2 + 1
+        }));
+
+        function drawCanvas() {
+            ctx.clearRect(0, 0, width, height);
+            ctx.fillStyle = 'rgba(59, 130, 246, 0.5)';
+            ctx.strokeStyle = 'rgba(59, 130, 246, 0.08)';
+
+            particles.forEach((p, i) => {
+                p.x += p.vx;
+                p.y += p.vy;
+
+                if (p.x < 0 || p.x > width) p.vx *= -1;
+                if (p.y < 0 || p.y > height) p.vy *= -1;
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fill();
+
+                for (let j = i + 1; j < particles.length; j++) {
+                    const p2 = particles[j];
+                    const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+                    if (dist < 140) {
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.stroke();
+                    }
+                }
+            });
+            requestAnimationFrame(drawCanvas);
+        }
+        drawCanvas();
+
+        // 2. Canlı Ping Simülasyonu
+        setInterval(() => {
+            const ping = Math.floor(Math.random() * 8) + 10;
+            document.getElementById('pingCounter').innerText = ping + 'ms';
+        }, 3000);
+
+        // 3. Mini Araçlar JS
+        function convertBase64() {
+            const input = document.getElementById('b64Input').value;
+            try {
+                const encoded = btoa(input);
+                document.getElementById('b64Result').innerText = encoded;
+            } catch (e) {
+                document.getElementById('b64Result').innerText = "Hata: Geçersiz karakter!";
+            }
+        }
+
+        function generatePass() {
+            const len = document.getElementById('passLen').value;
+            const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()";
+            let res = "";
+            for (let i = 0; i < len; i++) res += chars.charAt(Math.floor(Math.random() * chars.length));
+            document.getElementById('passResult').innerText = res;
+        }
+
+        function formatJSON() {
+            const input = document.getElementById('jsonInput').value;
+            try {
+                const parsed = JSON.parse(input);
+                alert("✅ Geçerli JSON!");
+            } catch (e) {
+                alert("❌ Hatalı JSON Yapısı!");
+            }
+        }
+
+        // 4. Modal
+        function toggleDiscordModal() {
+            document.getElementById('discordModal').classList.toggle('hidden');
+        }
+    </script>
 </body>
 </html>
