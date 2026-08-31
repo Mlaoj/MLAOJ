@@ -123,6 +123,23 @@ const getData = (key) => JSON.parse(localStorage.getItem(key));</pre>
                 card.style.display = (matchSearch && matchCat) ? 'block' : 'none';
             }
         }
-    </script>
+    </function generateMetaTags() {
+    const title = document.getElementById('metaTitle').value || 'MLAOJ Platform';
+    const desc = document.getElementById('metaDesc').value || 'Enterprise Portal';
+    const tag = `<title>${title}</title>\n<meta name="description" content="${desc}">`;
+    document.getElementById('metaResult').innerText = tag;
+}
+
+function testRegex() {
+    try {
+        const pattern = new RegExp(document.getElementById('regexPattern').value, 'g');
+        const text = document.getElementById('regexText').value;
+        const matches = text.match(pattern);
+        document.getElementById('regexResult').innerText = matches ? `Eşleşmeler: ${matches.join(', ')}` : "❌ Eşleşme bulunamadı.";
+    } catch(e) {
+        document.getElementById('regexResult').innerText = "⚠️ Geçersiz Regex ifadesi!";
+    }
+}
+        >
 </body>
 </html>
