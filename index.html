@@ -9,7 +9,6 @@
 </head>
 <body class="bg-gray-950 text-gray-100 font-sans antialiased selection:bg-blue-600 selection:text-white flex flex-col min-h-screen">
 
-    <!-- Header / Nav -->
     <header class="border-b border-gray-800/80 bg-gray-900/70 backdrop-blur-md sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex justify-between items-center">
             <div class="flex items-center gap-3">
@@ -17,7 +16,6 @@
                 <span class="font-extrabold text-2xl tracking-wider text-white">MLAOJ</span>
             </div>
             
-            <!-- Masaüstü Navigasyon -->
             <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
                 <a href="#scripts" class="hover:text-blue-400 transition">Betikler</a>
                 <a href="#tools" class="hover:text-blue-400 transition">Dev Tools</a>
@@ -28,13 +26,11 @@
                 </a>
             </nav>
 
-            <!-- Mobil Menü Butonu -->
             <button onclick="toggleMobileMenu()" class="md:hidden text-gray-400 hover:text-white focus:outline-none">
                 <i class="fa-solid fa-bars text-xl"></i>
             </button>
         </div>
 
-        <!-- Mobil Menü İçeriği -->
         <div id="mobileMenu" class="hidden md:hidden bg-gray-900 border-b border-gray-800 px-4 pt-2 pb-4 space-y-3">
             <a href="#scripts" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-blue-400">Betikler</a>
             <a href="#tools" onclick="toggleMobileMenu()" class="block text-gray-300 hover:text-blue-400">Dev Tools</a>
@@ -44,7 +40,6 @@
         </div>
     </header>
 
-    <!-- Hero Bölümü -->
     <section class="max-w-5xl mx-auto text-center py-20 px-4">
         <div class="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-semibold px-4 py-1.5 rounded-full mb-6">
             <span class="flex h-2 w-2 rounded-full bg-blue-400 animate-pulse"></span> MLAOJ v3.0 Ultimate Release
@@ -65,7 +60,6 @@
         </div>
     </section>
 
-    <!-- İstatistik Kartları -->
     <section class="max-w-6xl mx-auto px-4 mb-16">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 bg-gray-900/50 border border-gray-800/80 rounded-2xl p-6 backdrop-blur">
             <div class="text-center border-r border-gray-800 last:border-none">
@@ -87,7 +81,6 @@
         </div>
     </section>
 
-    <!-- Betikler / Scriptler -->
     <section id="scripts" class="max-w-6xl mx-auto px-4 py-8">
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4 border-l-4 border-blue-500 pl-4">
             <div>
@@ -130,7 +123,6 @@ print(''.join(random.choices(string.ascii_letters + string.digits + "!@#$", k=16
         </div>
     </section>
 
-    <!-- Mini Araçlar -->
     <section id="tools" class="max-w-6xl mx-auto px-4 py-12">
         <h2 class="text-2xl font-bold text-white border-l-4 border-indigo-500 pl-4 mb-8">Canlı Web Araçları</h2>
 
@@ -156,7 +148,6 @@ print(''.join(random.choices(string.ascii_letters + string.digits + "!@#$", k=16
         </div>
     </section>
 
-    <!-- Topluluk Katı -->
     <section id="links" class="max-w-6xl mx-auto px-4 py-8">
         <h2 class="text-2xl font-bold mb-6 text-white border-l-4 border-emerald-500 pl-4">Topluluk & Katılım</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -177,17 +168,16 @@ print(''.join(random.choices(string.ascii_letters + string.digits + "!@#$", k=16
         </div>
     </section>
 
-    <!-- İletişim (Gmail Entegreli Form) -->
     <section id="contact" class="max-w-4xl mx-auto px-4 py-12">
         <div class="bg-gray-900 border border-gray-800 rounded-2xl p-6 md:p-8 shadow-2xl">
             <h2 class="text-2xl font-bold text-white mb-2 text-center">İletişim Formu</h2>
-            <p class="text-xs text-gray-400 text-center mb-6">Öneri, istek veya destek taleplerinizi doğrudan Gmail hesabıma iletin.</p>
+            <p class="text-xs text-gray-400 text-center mb-6">Öneri, istek veya destek taleplerinizi iletin.</p>
             
-            <!-- Formspree Endpoint Bağlantısı -->
-            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="space-y-4">
+            <form action="https://formsubmit.co/iletisim@gmail.com" method="POST" class="space-y-4">
+                <input type="hidden" name="_captcha" value="false">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <input type="text" name="name" placeholder="Adınız" required class="w-full bg-gray-950 border border-gray-800 rounded-xl p-3 text-sm text-gray-200 focus:outline-none focus:border-blue-500">
-                    <input type="email" name="_replyto" placeholder="E-posta Adresiniz" required class="w-full bg-gray-950 border border-gray-800 rounded-xl p-3 text-sm text-gray-200 focus:outline-none focus:border-blue-500">
+                    <input type="email" name="email" placeholder="E-posta Adresiniz" required class="w-full bg-gray-950 border border-gray-800 rounded-xl p-3 text-sm text-gray-200 focus:outline-none focus:border-blue-500">
                 </div>
                 <textarea name="message" placeholder="Mesajınız..." rows="4" required class="w-full bg-gray-950 border border-gray-800 rounded-xl p-3 text-sm text-gray-200 focus:outline-none focus:border-blue-500"></textarea>
                 <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-xl transition shadow-lg shadow-blue-600/20">Mesajı Gönder</button>
@@ -199,7 +189,6 @@ print(''.join(random.choices(string.ascii_letters + string.digits + "!@#$", k=16
         © 2026 MLAOJ Platform. Tüm hakları saklıdır.
     </footer>
 
-    <!-- JS Mantığı -->
     <script>
         function toggleMobileMenu() {
             document.getElementById('mobileMenu').classList.toggle('hidden');
@@ -245,5 +234,4 @@ print(''.join(random.choices(string.ascii_letters + string.digits + "!@#$", k=16
         }
     </script>
 </body>
-    </html>
-    
+</html>
