@@ -1,0 +1,17 @@
+<!-- Araç 4: SEO & Meta Tag Jeneratörü -->
+<div class="bg-gray-900/80 border border-gray-800 rounded-2xl p-6 backdrop-blur-md hover:border-blue-500/40 transition">
+    <h3 class="font-bold text-sm text-blue-400 mb-3 flex items-center gap-2"><i class="fa-solid fa-tags"></i> SEO Meta Tag Oluşturucu</h3>
+    <input type="text" id="metaTitle" placeholder="Site Başlığı" class="w-full bg-gray-950 border border-gray-800 rounded-lg p-2.5 text-xs text-gray-200 mb-2 focus:outline-none focus:border-blue-500">
+    <input type="text" id="metaDesc" placeholder="Site Açıklaması" class="w-full bg-gray-950 border border-gray-800 rounded-lg p-2.5 text-xs text-gray-200 mb-2 focus:outline-none focus:border-blue-500">
+    <button onclick="generateMetaTags()" class="w-full bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold py-2 rounded-lg transition">Meta Kodları Üret</button>
+    <div id="metaResult" class="mt-3 bg-gray-950 p-2.5 rounded-lg text-xs font-mono text-gray-300 break-all min-h-[38px] flex items-center overflow-x-auto">HTML etiketleri burada çıkacak...</div>
+</div>
+
+<!-- Araç 5: Regex Test Aracı -->
+<div class="bg-gray-900/80 border border-gray-800 rounded-2xl p-6 backdrop-blur-md hover:border-emerald-500/40 transition">
+    <h3 class="font-bold text-sm text-emerald-400 mb-3 flex items-center gap-2"><i class="fa-solid fa-vial"></i> Regex Canlı Test</h3>
+    <input type="text" id="regexPattern" placeholder="Desen (Örn: [a-z]+)" class="w-full bg-gray-950 border border-gray-800 rounded-lg p-2.5 text-xs text-gray-200 mb-2 focus:outline-none focus:border-emerald-500 font-mono">
+    <input type="text" id="regexText" placeholder="Test Edilecek Metin" class="w-full bg-gray-950 border border-gray-800 rounded-lg p-2.5 text-xs text-gray-200 mb-2 focus:outline-none focus:border-emerald-500">
+    <button onclick="testRegex()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold py-2 rounded-lg transition">Eşleşmeyi Kontrol Et</button>
+    <div id="regexResult" class="mt-3 bg-gray-950 p-2.5 rounded-lg text-xs font-mono text-emerald-400 break-all min-h-[38px] flex items-center">Sonuç bekleniyor...</div>
+</div>
