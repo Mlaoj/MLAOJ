@@ -13,7 +13,7 @@
     <header class="border-b border-gray-800/80 bg-gray-900/70 backdrop-blur-md sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <img src="MLAOJ_20260831_145609_0000-2.jpg" alt="MLAOJ Logo" class="w-10 h-10 object-cover rounded-full border border-gray-700 shadow-md">
+                <img src="file_00000000e57c81f48430089ff2017f8a.png" alt="MLAOJ Logo" class="w-10 h-10 object-cover rounded-full border border-gray-700 shadow-md">
                 <span class="font-extrabold text-2xl tracking-wider text-white">MLAOJ</span>
             </div>
             
@@ -177,20 +177,21 @@ print(''.join(random.choices(string.ascii_letters + string.digits + "!@#$", k=16
         </div>
     </section>
 
-    <!-- İletişim -->
+    <!-- İletişim (Gmail Entegreli Form) -->
     <section id="contact" class="max-w-4xl mx-auto px-4 py-12">
         <div class="bg-gray-900 border border-gray-800 rounded-2xl p-6 md:p-8 shadow-2xl">
             <h2 class="text-2xl font-bold text-white mb-2 text-center">İletişim Formu</h2>
-            <p class="text-xs text-gray-400 text-center mb-6">Öneri, istek veya destek taleplerinizi doğrudan iletin.</p>
-            <form onsubmit="handleForm(event)" class="space-y-4">
+            <p class="text-xs text-gray-400 text-center mb-6">Öneri, istek veya destek taleplerinizi doğrudan Gmail hesabıma iletin.</p>
+            
+            <!-- Formspree Endpoint Bağlantısı -->
+            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="space-y-4">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <input type="text" placeholder="Adınız" required class="w-full bg-gray-950 border border-gray-800 rounded-xl p-3 text-sm text-gray-200 focus:outline-none focus:border-blue-500">
-                    <input type="email" placeholder="E-posta Adresiniz" required class="w-full bg-gray-950 border border-gray-800 rounded-xl p-3 text-sm text-gray-200 focus:outline-none focus:border-blue-500">
+                    <input type="text" name="name" placeholder="Adınız" required class="w-full bg-gray-950 border border-gray-800 rounded-xl p-3 text-sm text-gray-200 focus:outline-none focus:border-blue-500">
+                    <input type="email" name="_replyto" placeholder="E-posta Adresiniz" required class="w-full bg-gray-950 border border-gray-800 rounded-xl p-3 text-sm text-gray-200 focus:outline-none focus:border-blue-500">
                 </div>
-                <textarea placeholder="Mesajınız..." rows="4" required class="w-full bg-gray-950 border border-gray-800 rounded-xl p-3 text-sm text-gray-200 focus:outline-none focus:border-blue-500"></textarea>
+                <textarea name="message" placeholder="Mesajınız..." rows="4" required class="w-full bg-gray-950 border border-gray-800 rounded-xl p-3 text-sm text-gray-200 focus:outline-none focus:border-blue-500"></textarea>
                 <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-xl transition shadow-lg shadow-blue-600/20">Mesajı Gönder</button>
             </form>
-            <p id="formStatus" class="text-xs text-center text-green-400 mt-3 hidden">Mesajınız başarıyla iletildi!</p>
         </div>
     </section>
 
@@ -198,7 +199,7 @@ print(''.join(random.choices(string.ascii_letters + string.digits + "!@#$", k=16
         © 2026 MLAOJ Platform. Tüm hakları saklıdır.
     </footer>
 
-    <!-- Scriptler -->
+    <!-- JS Mantığı -->
     <script>
         function toggleMobileMenu() {
             document.getElementById('mobileMenu').classList.toggle('hidden');
@@ -242,13 +243,7 @@ print(''.join(random.choices(string.ascii_letters + string.digits + "!@#$", k=16
                 document.getElementById('base64Result').innerText = 'Hata: Geçersiz Base64 formatı!';
             }
         }
-
-        function handleForm(e) {
-            e.preventDefault();
-            document.getElementById('formStatus').classList.remove('hidden');
-            e.target.reset();
-            setTimeout(() => document.getElementById('formStatus').classList.add('hidden'), 3000);
-        }
     </script>
 </body>
-</html>
+    </html>
+    
